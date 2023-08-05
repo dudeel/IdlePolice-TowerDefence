@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77a0fc33af486de409da8935d9ef0596, type: 3}
-  m_Name: Test 2
+  m_Name: 020_Card
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 221fd9a648bca124a9a1fc2af7cfed63, type: 3}
-  Name: Robot
-  Rarity: 0
-  Type: 1
-  Health: 27
-  Damage: 8
-  ShootingSpeed: 0.4
+  ID: 0
+  Image: {fileID: 21300000, guid: a32896c9ea41d9e49a2fc0cb5db0c5e2, type: 3}
+  Name: Null
+  Rarity: 1
+  Type: 3
+  Health: 0
+  Damage: 0
+  ShootingSpeed: 0

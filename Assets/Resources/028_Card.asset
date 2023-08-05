@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77a0fc33af486de409da8935d9ef0596, type: 3}
-  m_Name: Test 3
+  m_Name: 028_Card
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: 847818a2a54411d44b8e25b25ef394ca, type: 3}
-  Name: Terrorist
-  Rarity: 0
-  Type: 3
-  Health: 27
-  Damage: 8
-  ShootingSpeed: 0.4
+  ID: 0
+  Image: {fileID: 21300000, guid: ac007616a89bdea4ca20260e5a3f9c0c, type: 3}
+  Name: Null
+  Rarity: 3
+  Type: 4
+  Health: 0
+  Damage: 0
+  ShootingSpeed: 0

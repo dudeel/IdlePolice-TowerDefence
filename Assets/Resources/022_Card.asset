@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77a0fc33af486de409da8935d9ef0596, type: 3}
-  m_Name: Test 1
+  m_Name: 022_Card
   m_EditorClassIdentifier: 
-  Image: {fileID: 21300000, guid: c0aa062d9f6fba941bc72217511cb6dd, type: 3}
-  Name: Doc
-  Rarity: 3
+  ID: 0
+  Image: {fileID: 21300000, guid: b38f8bc5a837f784197d75f68bf07f05, type: 3}
+  Name: Null
+  Rarity: 0
   Type: 2
-  Health: 27
-  Damage: 8
-  ShootingSpeed: 0.4
+  Health: 0
+  Damage: 0
+  ShootingSpeed: 0
