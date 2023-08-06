@@ -2,14 +2,14 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public class Gold
+public class Gem
 {
-    private const int MAX_AMOUNT = 5000000;
-    public readonly string KEY = "/Gold";
+    private const int MAX_AMOUNT = 500000;
+    public readonly string KEY = "/Gem";
 
     private int Amount;
 
-    private readonly GoldSerialize _goldSerialize = new();
+    private readonly GemSerialize _gemSerialize = new();
 
     public void Add(int value)
     {
@@ -17,7 +17,7 @@ public class Gold
             Amount += Mathf.Abs(value);
         else Amount = MAX_AMOUNT;
 
-        _goldSerialize.SaveData(KEY, Amount);
+        _gemSerialize.SaveData(KEY, Amount);
     }
 
     public void Take(int value)
@@ -26,23 +26,23 @@ public class Gold
             Amount -= Mathf.Abs(value);
         else Amount = 0;
 
-        _goldSerialize.SaveData(KEY, Amount);   
+        _gemSerialize.SaveData(KEY, Amount);   
     }
 
     public void Set(int value)
     {
         Amount = Mathf.Abs(value);
 
-        _goldSerialize.SaveData(KEY, Amount);
+        _gemSerialize.SaveData(KEY, Amount);
     }
 
     public int Count()
     {
-        return _goldSerialize.LoadData(KEY);
+        return _gemSerialize.LoadData(KEY);
     }
 }
 
-public class GoldSerialize : SaveLoadAbstract
+public class GemSerialize : SaveLoadAbstract
 {    
 	public override void SaveData(string key, int data)
 	{
