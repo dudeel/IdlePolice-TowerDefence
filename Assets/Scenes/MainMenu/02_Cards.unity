@@ -14980,50 +14980,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 803252778}
   m_CullTransparentMesh: 1
---- !u!1 &809139083
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 809139085}
-  - component: {fileID: 809139084}
-  m_Layer: 0
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &809139084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809139083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed2af8e4ea02d644f80084fb652e2a1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &809139085
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809139083}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5971432, y: 6.424825, z: 1.6184086}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &811801990
 GameObject:
   m_ObjectHideFlags: 0
@@ -18653,7 +18609,7 @@ GameObject:
   - component: {fileID: 1004358453}
   - component: {fileID: 1004358452}
   m_Layer: 5
-  m_Name: Text_Value
+  m_Name: Gem_Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34341,6 +34297,7 @@ GameObject:
   - component: {fileID: 1744937296}
   - component: {fileID: 1744937298}
   - component: {fileID: 1744937297}
+  - component: {fileID: 1744937300}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -34409,6 +34366,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744937295}
   m_CullTransparentMesh: 1
+--- !u!114 &1744937300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744937295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20498cc51efdfd94bbc4720dc967d667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goldsText: {fileID: 1982140381}
+  _gemsText: {fileID: 1004358453}
 --- !u!1 &1748966674
 GameObject:
   m_ObjectHideFlags: 0
@@ -38178,7 +38149,7 @@ GameObject:
   - component: {fileID: 1982140381}
   - component: {fileID: 1982140380}
   m_Layer: 5
-  m_Name: Text_Value
+  m_Name: Gold_Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41047,4 +41018,3 @@ SceneRoots:
   - {fileID: 1127639247}
   - {fileID: 1195989464}
   - {fileID: 2124165155}
-  - {fileID: 809139085}
