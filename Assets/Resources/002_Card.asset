@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a0fc33af486de409da8935d9ef0596, type: 3}
   m_Name: 002_Card
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 2
   Image: {fileID: 21300000, guid: 29524ccd975d4094d9cfe13e11b6e678, type: 3}
   Name: Null
   Rarity: 0
