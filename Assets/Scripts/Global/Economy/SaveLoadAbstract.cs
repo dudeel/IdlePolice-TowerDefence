@@ -5,10 +5,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public abstract class SaveLoadAbstract
 {
-	public virtual void SaveData(string key, int _data) {}
+	public virtual void SaveData(string key, object _data) {}
 	//public virtual int LoadData(string key) { return 0; }
 
-	protected void CreateFile(string key)
+	protected virtual void CreateFile(string key)
 	{
 		string path = GetPath(key);
 

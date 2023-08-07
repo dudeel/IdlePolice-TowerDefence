@@ -44,7 +44,7 @@ public class Gold
 
 public class GoldSerialize : SaveLoadAbstract
 {    
-	public override void SaveData(string key, int data)
+	public override void SaveData(string key, object data)
 	{
 		string path = GetPath(key);
 		

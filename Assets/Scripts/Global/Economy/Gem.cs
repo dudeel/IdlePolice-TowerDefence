@@ -44,7 +44,7 @@ public class Gem
 
 public class GemSerialize : SaveLoadAbstract
 {    
-	public override void SaveData(string key, int data)
+	public override void SaveData(string key, object data)
 	{
 		string path = GetPath(key);
 		

@@ -1,36 +1,24 @@
-using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public class Level
 {
-    private const int MAX_LEVEL = 150;
-    public readonly string KEY = "/Level";
-
-    private int _level;
-    private int _exp;
-
+    public readonly static string KEY = "/Level.dat";
     private readonly LevelSerialize _levelSerialize = new();
 
-    public void SetLevel(int value)
+    public void Set(LevelData data)
     {
-        _level = Mathf.Abs(value);
-        _exp = 0;
-
-        _levelSerialize.SaveData(KEY, _level);
+        _levelSerialize.SaveData(KEY, data);
     }
 
-    public int GetLevel()
+    public LevelData Get()
     {
-        return _levelSerialize.LoadData(KEY).Level;
-    }
-
-    public int GetExp()
-    {
-        return _levelSerialize.LoadData(KEY).Exp;
+        return _levelSerialize.LoadData(KEY);
     }
 }
 
+
+[System.Serializable]
 public class LevelData
 {
     public int Level;
@@ -38,41 +26,55 @@ public class LevelData
 }
 
 public class LevelSerialize : SaveLoadAbstract
-{    
-	public override void SaveData(string key, int data)
+{
+    private string _path;
+
+	protected override void CreateFile(string key)
 	{
-		string path = GetPath(key);
+		_path = UnityEngine.Application.persistentDataPath + key;
+
+		FileStream file = File.Create(_path);
 		
-		if (!File.Exists(path))
-		{ CreateFile(key); }
+		LevelData data = new()
+		{
+			Level = 1,
+			Exp = 0
+		};
 
 		BinaryFormatter formatter = new(); 
-        FileStream file = File.Open(path, FileMode.Open);
+        formatter.Serialize(file, data);
 
-        LevelData _levelData = new()
-        {
-            Level = data,
-            Exp = data
-        };
-
-        //save
-        formatter.Serialize(file, _levelData);
 		file.Close();
+	}
+	
+	public override void SaveData(string key, object data)
+	{
+		_path = UnityEngine.Application.persistentDataPath + key;
+
+		if (!File.Exists(_path))
+		{ CreateFile(key); }
+		
+    	FileStream _file = File.Open(_path, FileMode.Open);
+
+		BinaryFormatter _formatter = new(); 
+        _formatter.Serialize(_file, data);
+		
+		_file.Close();
 	}
 
 	public LevelData LoadData(string key)
 	{
-		string path = GetPath(key);
+		_path = UnityEngine.Application.persistentDataPath + key;
+
+		if (!File.Exists(_path))
+		{ CreateFile(key); }
 		
-		if (!File.Exists(path))
-		{  CreateFile(key); }
+    	FileStream _file = File.Open(_path, FileMode.Open);
 
-		BinaryFormatter formatter = new(); 
-        FileStream file = File.Open(path, FileMode.Open);
+		BinaryFormatter _formatter = new(); 
+		LevelData data = (LevelData)_formatter.Deserialize(_file);
 
-		//load
-		LevelData data = (LevelData)formatter.Deserialize(file);
-		file.Close();
+		_file.Close();
 
         return data;
 	}
