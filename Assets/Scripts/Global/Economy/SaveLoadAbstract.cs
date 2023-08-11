@@ -5,8 +5,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public abstract class SaveLoadAbstract
 {
-	public virtual void SaveData(string key, object _data) {}
-	//public virtual int LoadData(string key) { return 0; }
+	public virtual void SaveData<T>(string key, T _data) {}
+	public virtual T LoadData<T>(string key) { return default; }
 
 	protected virtual void CreateFile(string key)
 	{

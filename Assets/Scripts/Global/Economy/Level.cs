@@ -47,7 +47,7 @@ public class LevelSerialize : SaveLoadAbstract
 		file.Close();
 	}
 	
-	public override void SaveData(string key, object data)
+	public override void SaveData<LevelData>(string key, LevelData data)
 	{
 		_path = UnityEngine.Application.persistentDataPath + key;
 

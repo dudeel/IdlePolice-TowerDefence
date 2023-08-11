@@ -4,7 +4,8 @@ using TMPro;
 
 public class UI_Card : MonoBehaviour
 {
-    [SerializeField] private CardInfo _characterInfo;
+    public CardInfo CharacterInfo;
+
     [SerializeField] private GlobalAttackType _globalCardType;
     [SerializeField] private GlobalRarity _globalRarity;
 
@@ -13,12 +14,12 @@ public class UI_Card : MonoBehaviour
     [SerializeField] private Image _rarity;
     [SerializeField] private Image _type;
 
-    private void Awake()
+    public void LoadData()
     {
-        _character.sprite = _characterInfo.Image;
-        _name.text = _characterInfo.Name;
-        _rarity.sprite = _globalRarity.GetRaritySprite(_characterInfo.Rarity);
-        _type.sprite = _globalCardType.GetTypeSprite(_characterInfo.Type);
+        _character.sprite = CharacterInfo.Image;
+        _name.text = CharacterInfo.Name;
+        _rarity.sprite = _globalRarity.GetRaritySprite(CharacterInfo.Rarity);
+        _type.sprite = _globalCardType.GetTypeSprite(CharacterInfo.Type);
     }
     
 }
