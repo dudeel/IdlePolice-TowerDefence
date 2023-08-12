@@ -23,18 +23,27 @@ public class Card
     private void LoadData()
     {
         _amount = _cardSerialize.LoadData(KEY);
-        
+
+        LoadSelections();
+        LoadHaves();
+    }
+
+    private void LoadSelections()
+    {
         for (int i = 0; i < _amount.Selecteds.Count; i++)
         {
             CardSelected.Add(_globalCardsList.Cards[_amount.Selecteds[i].ID - 1]);
         }
+    }
 
+    private void LoadHaves()
+    {
         for (int i = 0; i < _amount.Haves.Count; i++)
         {
             CardHave.Add(_globalCardsList.Cards[_amount.Haves[i].ID - 1]);
         }
     }
-
+    
     public void Set(int value)
     {
         _cardSerialize.SaveData(KEY, _amount);
@@ -64,13 +73,6 @@ public class CardSerialize : SaveLoadAbstract
 {    
     private string _path;
 
-    readonly Have _dataHave = new()
-    {
-        ID = 1,
-        Level = 1,
-        Amount = 0,
-    };
-
 	protected override void CreateFile(string key)
 	{
 		_path = Application.persistentDataPath + key;
@@ -84,8 +86,10 @@ public class CardSerialize : SaveLoadAbstract
         data.Selecteds.Add(_ = new Selected() { ID = 2 });
         data.Selecteds.Add(_ = new Selected() { ID = 9 });
 
-        for (int i = 0; i < Random.Range(3, 20); i++)
-            data.Haves.Add(_dataHave);
+        data.Haves.Add(_ = new Have() { ID = 1, Level = 1, Amount = 0 });
+        data.Haves.Add(_ = new Have() { ID = 2, Level = 1, Amount = 1 });
+        data.Haves.Add(_ = new Have() { ID = 8, Level = 1, Amount = 42 });
+        data.Haves.Add(_ = new Have() { ID = 9, Level = 1, Amount = 2 });
 
 		BinaryFormatter formatter = new(); 
         formatter.Serialize(file, data);
