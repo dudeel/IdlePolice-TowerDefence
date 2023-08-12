@@ -31,6 +31,9 @@ public class UI_CardsNotFoundList : MonoBehaviour
             b.GetComponent<UI_Card>().CharacterInfo = _uiCard[i];
             b.GetComponent<UI_Card>()._globalCardType = transform.GetComponent<GlobalAttackType>();
             b.GetComponent<UI_Card>()._globalRarity = transform.GetComponent<GlobalRarity>();
+            
+            b.transform.GetChild(3).gameObject.SetActive(false);
+            b.transform.GetChild(6).gameObject.SetActive(true);
             b.GetComponent<UI_Card>().LoadData();
         }
     }
