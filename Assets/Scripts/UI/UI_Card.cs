@@ -6,8 +6,8 @@ public class UI_Card : MonoBehaviour
 {
     public CardInfo CharacterInfo;
 
-    [SerializeField] private GlobalAttackType _globalCardType;
-    [SerializeField] private GlobalRarity _globalRarity;
+    public GlobalAttackType _globalCardType;
+    public GlobalRarity _globalRarity;
 
     [SerializeField] private Image _character;
     [SerializeField] private TextMeshProUGUI _name;
