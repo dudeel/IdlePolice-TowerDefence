@@ -15,6 +15,9 @@ public class UI_CardsCollectionList : MonoBehaviour
             b.GetComponent<UI_Card>()._globalCardType = transform.GetComponent<GlobalAttackType>();
             b.GetComponent<UI_Card>()._globalRarity = transform.GetComponent<GlobalRarity>();
             b.GetComponent<UI_Card>().LoadData();
+
+            b.GetComponent<UI_CardLevel>().isHave = true;
+            b.GetComponent<UI_CardLevel>().Data = card.Amount.Haves[i];
         }
     }
 }

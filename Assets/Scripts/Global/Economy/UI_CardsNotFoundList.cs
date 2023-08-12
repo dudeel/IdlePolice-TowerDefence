@@ -1,16 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UI_CardsNotFoundList : MonoBehaviour
 {
     [SerializeField] private GameObject _cardObject;
+    private CardInfo[] _uiCard;
 
     private void Awake()
     {
+        LoadData();
+        ShowCards();
+    }
+
+    private void LoadData()
+    {
         Card card = new();
         GlobalCardsList cardsList = new();
-        CardInfo[] _uiCard = new CardInfo[cardsList.Cards.Length];
+        _uiCard = new CardInfo[cardsList.Cards.Length];
         
         for (int i = 0; i < cardsList.Cards.Length; i++)
         {
@@ -21,7 +26,10 @@ public class UI_CardsNotFoundList : MonoBehaviour
         {
             _uiCard[card.CardHave[i].ID - 1] = null;
         }
+    }
 
+    private void ShowCards()
+    {
         for (int i = 0; i < _uiCard.Length; i++)
         {
             if (_uiCard[i] == null) continue;
