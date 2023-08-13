@@ -28,8 +28,8 @@ public static class CardHandler
     {
         public CardFormattedData[] all;
         public CardFormattedData[] selected;
-        public CardFormattedData[] collected;
-        public CardFormattedData[] notFound;
+        public List<CardFormattedData> collected;
+        public List<CardFormattedData> notFound;
     }
 
     public static CardContainer cardContainer;
@@ -43,8 +43,8 @@ public static class CardHandler
         {
             all = new CardFormattedData[globalCardsList.Cards.Length],
             selected = new CardFormattedData[4],
-            collected = new CardFormattedData[globalCardsList.Cards.Length],
-            notFound = new CardFormattedData[globalCardsList.Cards.Length]
+            collected = new(),
+            notFound = new()
         };
 
         UnityEngine.Debug.Log("globalCardsList: " + globalCardsList.Cards.Length);
@@ -66,12 +66,15 @@ public static class CardHandler
                 cardStatus = CardStatus.NotFound
             };
             cardContainer.all[i] = cardFormattedData;
+            cardContainer.notFound.Add(cardFormattedData);
 
             // Если такая карта есть в коллекции игрока
             for (int j = 0; j < card.Amount.Collecteds.Count; j++)
             {
                 if (globalCardsList.Cards[i].ID == card.Amount.Collecteds[j].ID)
                 {
+                    cardContainer.notFound.Remove(cardFormattedData);
+
                     cardFormattedLevel = new()
                     {
                         Level = card.Amount.Collecteds[j].Level,
@@ -87,6 +90,7 @@ public static class CardHandler
                     };
 
                     cardContainer.all[i] = cardFormattedData;
+                    cardContainer.collected.Add(cardFormattedData);
                 }
             }
 
@@ -114,10 +118,9 @@ public static class CardHandler
             }
         }
 
-        UnityEngine.Debug.Log("--------------------------------------------");
-        for (int i = 0; i < cardContainer.all.Length; i++)
-            if (cardContainer.all[i] != null)
-                UnityEngine.Debug.Log(i + ": " + cardContainer.all[i].cardStatus);
+        UnityEngine.Debug.Log("all: " + cardContainer.all.Length);
+        UnityEngine.Debug.Log("collected: " + cardContainer.collected.Count);
+        UnityEngine.Debug.Log("notFound: " + cardContainer.notFound.Count);
     }
 
     // public static CardContainer Get()
