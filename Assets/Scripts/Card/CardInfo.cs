@@ -15,5 +15,5 @@ public class CardInfo : ScriptableObject
 
     public float Health;
     public float Damage;
-    public float ShootingSpeed ;
+    public float AttackInterval;
 }

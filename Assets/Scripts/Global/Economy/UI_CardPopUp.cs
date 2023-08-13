@@ -1,16 +1,10 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class UI_CardPopUp : MonoBehaviour
 {
-    [SerializeField] private Have _data = new();
-    [SerializeField] private GlobalCardsList _cards;
-
     [SerializeField] private GameObject _menuUI;
-    [SerializeField] private Button _background;
-    [SerializeField] private Button _closeButton;
 
     [SerializeField] private int _mergeLevel = 1;
     [SerializeField] private int _upgradeCardLevel = 1;
@@ -44,16 +38,39 @@ public class UI_CardPopUp : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _upgradeCardText;
     [SerializeField] private TextMeshProUGUI _upgradeText;
 
-    private void Awake()
-    {
-        GlobalCardsList cards = new();
-        _cards = cards;
-    }
-
     public void SetHaveData(Have data, bool isSelect)
     {
-        _data = data;
+        _upgradeCardLevel = data.Level;
 
+        LoadCardData(data);
+        SelectCheck(isSelect);
+    }
+
+    public void LoadCardData(Have data)
+    {
+        GlobalCardsList cardList = new();
+        GlobalRarity globalRarity = transform.GetComponent<GlobalRarity>();
+
+        _descriptionText.text = cardList.Cards[data.ID].Description;
+        _targetText.text = GlobalTargetType.GetTargetType(cardList.Cards[data.ID].Target);
+        _healthText.text = cardList.Cards[data.ID].Health.ToString();
+        _damageText.text = cardList.Cards[data.ID].Damage.ToString();
+        _attackIntervalText.text = cardList.Cards[data.ID].AttackInterval.ToString();
+
+        _rarityText.text = globalRarity.GetRarityText(cardList.Cards[data.ID].Rarity);
+        _rarityImage.sprite = globalRarity.GetRarityMiniSprite(cardList.Cards[data.ID].Rarity);
+
+        _uiCard.CharacterInfo = cardList.Cards[data.ID];
+        _uiCard._globalCardType = transform.GetComponent<GlobalAttackType>();
+        _uiCard._globalRarity = globalRarity;
+        _uiCard.LoadData();
+
+        _uiCard.GetComponent<UI_CardLevel>().isHave = true;
+        _uiCard.GetComponent<UI_CardLevel>().Data = data;
+    }
+
+    public void SelectCheck(bool isSelect)
+    {
         if (isSelect)
         {
             _selectButtonUI.enabled = false;
@@ -66,27 +83,45 @@ public class UI_CardPopUp : MonoBehaviour
         }
     }
 
-    public void SetNotFoundData()
+    public void UpgradeCheck(Have data)
     {
-        
+        Curency _curencySerialize = new();
+
+        int levelMultiply = 2;
+        int amountEnought = data.Level * levelMultiply;
+
+        int goldCount = _curencySerialize.Count().Gold;
+        int goldMultiply = 75;
+        int goldEnought = data.Level * goldMultiply;
+
+        if (data.Amount >= amountEnought)
+        {
+            if (goldCount >= goldEnought)
+            {
+                _upgradeButton.enabled = true;
+                _upgradeButton.sprite = _enableButtonSprite;
+            }
+            else
+            {
+                _upgradeButton.enabled = false;
+                _upgradeButton.sprite = _disableButtonSprite;
+            }
+        }
+        else
+        {
+            _upgradeButton.enabled = false;
+            _upgradeButton.sprite = _disableButtonSprite;
+        }
     }
 
-    public void ShowInfo()
+    public void LoadInfoButton()
     {
-
-    }
-
-    public void SelectCheck()
-    {
-
+        _mergeLevelText.text = _mergeLevel.ToString();
+        _upgradeCardText.text = _upgradeCardLevel.ToString();
+        _upgradeText.text = _upgradeLevel.ToString();
     }
 
     public void SelectClick()
-    {
-
-    }
-
-    public void UpgradeCheck()
     {
 
     }

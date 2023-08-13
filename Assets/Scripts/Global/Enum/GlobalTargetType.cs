@@ -21,7 +21,7 @@ public static class GlobalTargetType
                 return "Random";
 
             default: 
-                Debug.Log("This rarity is not found. Set default = First");
+                Debug.LogError("This rarity is not found. Set default = First");
                 return "First";
         }
     }

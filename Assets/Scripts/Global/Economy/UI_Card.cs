@@ -18,7 +18,7 @@ public class UI_Card : MonoBehaviour
     {
         _character.sprite = CharacterInfo.Image;
         _name.text = CharacterInfo.Name;
-        _rarity.sprite = _globalRarity.GetRaritySprite(CharacterInfo.Rarity);
+        _rarity.sprite = _globalRarity.GetRarityCardSprite(CharacterInfo.Rarity);
         _type.sprite = _globalCardType.GetTypeSprite(CharacterInfo.Type);
     }
     

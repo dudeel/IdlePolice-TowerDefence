@@ -740,10 +740,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9230a6ff78fca0745b50a227e5856d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _normal: {fileID: 21300000, guid: c52ccc8f4d2b65a47b6a5f72b0748d73, type: 3}
-  _rare: {fileID: 21300000, guid: 38f92031199c89a43b0fccc158a97a94, type: 3}
-  _magic: {fileID: 21300000, guid: 4ca157e8354b868418f5b652aace3ad2, type: 3}
-  _legendary: {fileID: 21300000, guid: 795cca386bf0edb4e903108e3b80ed81, type: 3}
+  _normalCard: {fileID: 21300000, guid: c52ccc8f4d2b65a47b6a5f72b0748d73, type: 3}
+  _rareCard: {fileID: 21300000, guid: 38f92031199c89a43b0fccc158a97a94, type: 3}
+  _magicCard: {fileID: 21300000, guid: 4ca157e8354b868418f5b652aace3ad2, type: 3}
+  _legendaryCard: {fileID: 21300000, guid: 795cca386bf0edb4e903108e3b80ed81, type: 3}
+  _normalMini: {fileID: 21300000, guid: 440e1ba0a5364e04da5aa109bf30d34a, type: 3}
+  _rareMini: {fileID: 21300000, guid: 491e1ba513c9c5145898c5d42041924e, type: 3}
+  _magicMini: {fileID: 21300000, guid: e8b4981d041093b48a4b7ffb44490753, type: 3}
+  _legendaryMini: {fileID: 21300000, guid: 3a496148efdb68b49b8eb6a04c9cffe7, type: 3}
 --- !u!1 &168853294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,10 +1976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de18cff95747c74d873c5a4d0479674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data:
-    ID: 0
-    Level: 0
-    Amount: 0
   _menuUI: {fileID: 1718308565}
   _background: {fileID: 562611908}
   _closeButton: {fileID: 119135273}
@@ -3937,10 +3937,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9230a6ff78fca0745b50a227e5856d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _normal: {fileID: 21300000, guid: c52ccc8f4d2b65a47b6a5f72b0748d73, type: 3}
-  _rare: {fileID: 21300000, guid: 38f92031199c89a43b0fccc158a97a94, type: 3}
-  _magic: {fileID: 21300000, guid: 4ca157e8354b868418f5b652aace3ad2, type: 3}
-  _legendary: {fileID: 21300000, guid: 795cca386bf0edb4e903108e3b80ed81, type: 3}
+  _normalCard: {fileID: 21300000, guid: c52ccc8f4d2b65a47b6a5f72b0748d73, type: 3}
+  _rareCard: {fileID: 21300000, guid: 38f92031199c89a43b0fccc158a97a94, type: 3}
+  _magicCard: {fileID: 21300000, guid: 4ca157e8354b868418f5b652aace3ad2, type: 3}
+  _legendaryCard: {fileID: 21300000, guid: 795cca386bf0edb4e903108e3b80ed81, type: 3}
+  _normalMini: {fileID: 21300000, guid: 440e1ba0a5364e04da5aa109bf30d34a, type: 3}
+  _rareMini: {fileID: 21300000, guid: 491e1ba513c9c5145898c5d42041924e, type: 3}
+  _magicMini: {fileID: 21300000, guid: e8b4981d041093b48a4b7ffb44490753, type: 3}
+  _legendaryMini: {fileID: 21300000, guid: 3a496148efdb68b49b8eb6a04c9cffe7, type: 3}
 --- !u!1 &850385117
 GameObject:
   m_ObjectHideFlags: 0
@@ -5339,10 +5343,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9230a6ff78fca0745b50a227e5856d99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _normal: {fileID: 21300000, guid: c52ccc8f4d2b65a47b6a5f72b0748d73, type: 3}
-  _rare: {fileID: 21300000, guid: 38f92031199c89a43b0fccc158a97a94, type: 3}
-  _magic: {fileID: 21300000, guid: 4ca157e8354b868418f5b652aace3ad2, type: 3}
-  _legendary: {fileID: 21300000, guid: 795cca386bf0edb4e903108e3b80ed81, type: 3}
+  _normalCard: {fileID: 21300000, guid: c52ccc8f4d2b65a47b6a5f72b0748d73, type: 3}
+  _rareCard: {fileID: 21300000, guid: 38f92031199c89a43b0fccc158a97a94, type: 3}
+  _magicCard: {fileID: 21300000, guid: 4ca157e8354b868418f5b652aace3ad2, type: 3}
+  _legendaryCard: {fileID: 21300000, guid: 795cca386bf0edb4e903108e3b80ed81, type: 3}
+  _normalMini: {fileID: 21300000, guid: 440e1ba0a5364e04da5aa109bf30d34a, type: 3}
+  _rareMini: {fileID: 21300000, guid: 491e1ba513c9c5145898c5d42041924e, type: 3}
+  _magicMini: {fileID: 21300000, guid: e8b4981d041093b48a4b7ffb44490753, type: 3}
+  _legendaryMini: {fileID: 21300000, guid: 3a496148efdb68b49b8eb6a04c9cffe7, type: 3}
 --- !u!114 &1091797275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7670,6 +7678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1477081538}
+  - component: {fileID: 1477081539}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -7699,6 +7708,26 @@ RectTransform:
   m_AnchoredPosition: {x: 450, y: -240}
   m_SizeDelta: {x: 800, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1477081539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477081537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9230a6ff78fca0745b50a227e5856d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _normalCard: {fileID: 21300000, guid: c52ccc8f4d2b65a47b6a5f72b0748d73, type: 3}
+  _rareCard: {fileID: 21300000, guid: 38f92031199c89a43b0fccc158a97a94, type: 3}
+  _magicCard: {fileID: 21300000, guid: 4ca157e8354b868418f5b652aace3ad2, type: 3}
+  _legendaryCard: {fileID: 21300000, guid: 795cca386bf0edb4e903108e3b80ed81, type: 3}
+  _normalMini: {fileID: 21300000, guid: 440e1ba0a5364e04da5aa109bf30d34a, type: 3}
+  _rareMini: {fileID: 21300000, guid: 491e1ba513c9c5145898c5d42041924e, type: 3}
+  _magicMini: {fileID: 21300000, guid: e8b4981d041093b48a4b7ffb44490753, type: 3}
+  _legendaryMini: {fileID: 21300000, guid: 3a496148efdb68b49b8eb6a04c9cffe7, type: 3}
 --- !u!1 &1494661611
 GameObject:
   m_ObjectHideFlags: 0
