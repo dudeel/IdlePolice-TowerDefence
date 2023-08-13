@@ -13,7 +13,7 @@ public class Card
 
     private readonly CardSerialize _cardSerialize = new();
 
-    private CardData _amount = new();
+    public CardData Amount = new();
 
     public Card()
     {
@@ -22,7 +22,7 @@ public class Card
 
     private void LoadData()
     {
-        _amount = _cardSerialize.LoadData(KEY);
+        Amount = _cardSerialize.LoadData(KEY);
 
         LoadSelections();
         LoadHaves();
@@ -30,24 +30,24 @@ public class Card
 
     private void LoadSelections()
     {
-        for (int i = 0; i < _amount.Selecteds.Count; i++)
+        for (int i = 0; i < Amount.Selecteds.Count; i++)
         {
-            CardSelected.Add(_globalCardsList.Cards[_amount.Selecteds[i].ID - 1]);
+            CardSelected.Add(_globalCardsList.Cards[Amount.Selecteds[i].ID - 1]);
         }
     }
 
     private void LoadHaves()
     {
-        for (int i = 0; i < _amount.Haves.Count; i++)
+        for (int i = 0; i < Amount.Haves.Count; i++)
         {
-            CardHave.Add(_globalCardsList.Cards[_amount.Haves[i].ID - 1]);
+            CardHave.Add(_globalCardsList.Cards[Amount.Haves[i].ID - 1]);
         }
     }
-    
-    public void Set(int value)
-    {
-        _cardSerialize.SaveData(KEY, _amount);
-    }
+
+    // public void Set(int value)
+    // {
+    //     _cardSerialize.SaveData(KEY, Amount);
+    // }
 }
 
 [System.Serializable]
@@ -87,9 +87,10 @@ public class CardSerialize : SaveLoadAbstract
         data.Selecteds.Add(_ = new Selected() { ID = 9 });
 
         data.Haves.Add(_ = new Have() { ID = 1, Level = 1, Amount = 0 });
-        data.Haves.Add(_ = new Have() { ID = 2, Level = 1, Amount = 1 });
-        data.Haves.Add(_ = new Have() { ID = 8, Level = 1, Amount = 42 });
-        data.Haves.Add(_ = new Have() { ID = 9, Level = 1, Amount = 2 });
+        data.Haves.Add(_ = new Have() { ID = 2, Level = 40, Amount = 1 });
+        data.Haves.Add(_ = new Have() { ID = 8, Level = 32, Amount = 42 });
+        data.Haves.Add(_ = new Have() { ID = 9, Level = 3, Amount = 2 });
+        data.Haves.Add(_ = new Have() { ID = 10, Level = 1, Amount = 4 });
 
 		BinaryFormatter formatter = new(); 
         formatter.Serialize(file, data);

@@ -7,11 +7,13 @@ public class CardInfo : ScriptableObject
     public Sprite Image = null;
 
     public string Name = "Null";
+    public string Description = "Null";
 
     public GlobalRarity.Rarity Rarity;
     public GlobalAttackType.Type Type;
+    public GlobalTargetType.Target Target;
 
     public float Health;
     public float Damage;
-    public float ShootingSpeed ;
+    public float AttackInterval;
 }
