@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: 016_Card
   m_EditorClassIdentifier: 
   ID: 16
-  Image: {fileID: 21300000, guid: 08c4d24131e055640bd0eacc904d7419, type: 3}
+  Image: {fileID: 21300000, guid: 3a26ea9f8d4845d4c8e9d70eedf454e3, type: 3}
   Name: Null
-  Rarity: 2
+  Description: Null
+  Rarity: 3
   Type: 1
+  Target: 0
   Health: 0
   Damage: 0
-  ShootingSpeed: 0
+  AttackInterval: 0

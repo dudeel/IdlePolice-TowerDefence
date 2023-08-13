@@ -8,6 +8,7 @@ public class UI_Card : MonoBehaviour
 
     public GlobalAttackType _globalCardType;
     public GlobalRarity _globalRarity;
+    //public UI_CardPopUp PopUp;
 
     [SerializeField] private Image _character;
     [SerializeField] private TextMeshProUGUI _name;
@@ -21,5 +22,11 @@ public class UI_Card : MonoBehaviour
         _rarity.sprite = _globalRarity.GetRarityCardSprite(CharacterInfo.Rarity);
         _type.sprite = _globalCardType.GetTypeSprite(CharacterInfo.Type);
     }
+
+    // public void OpenPopUp()
+    // {
+    //     PopUp.OpenMenu();
+    //     PopUp.SetHaveData(transform.GetComponent<UI_CardLevel>(), true);
+    // }
     
 }

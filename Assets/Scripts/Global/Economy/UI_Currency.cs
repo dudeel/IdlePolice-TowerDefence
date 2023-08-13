@@ -14,6 +14,8 @@ public class UI_Currency : MonoBehaviour
     {
         SetData();
         UpdateText();
+        
+        CardHandler.LoadData();
     }
     
     private void SetData()

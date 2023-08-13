@@ -26,7 +26,7 @@ public class UI_CardLevel : MonoBehaviour
     [SerializeField] private Sprite _maxBar;
 
     public bool isHave = false;
-    public Have Data = new();
+    public Collect Data = new();
     private int _enoughtAmount;
 
     void Start()
@@ -63,13 +63,13 @@ public class UI_CardLevel : MonoBehaviour
     private void UpdateLevelText()
     {
         _levelText.SetText(Data.Level.ToString());
-        _expText.SetText($"{Data.Amount}/{_enoughtAmount}");
+        _expText.SetText($"{Data.Exp}/{_enoughtAmount}");
 
         SetProgressFill();
     }
 
     private void SetProgressFill()
     {
-        _progressBar.fillAmount = Mathf.InverseLerp(0f, _enoughtAmount, Data.Amount);
+        _progressBar.fillAmount = Mathf.InverseLerp(0f, _enoughtAmount, Data.Exp);
     }
 }
