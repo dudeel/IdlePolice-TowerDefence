@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-
 public static class CardHandler
 {
     public enum CardStatus
@@ -28,103 +25,146 @@ public static class CardHandler
     {
         public CardFormattedData[] all;
         public CardFormattedData[] selected;
-        public List<CardFormattedData> collected;
-        public List<CardFormattedData> notFound;
+        public System.Collections.Generic.List<CardFormattedData> collected;
+        public System.Collections.Generic.List<CardFormattedData> notFound;
     }
 
-    public static CardContainer cardContainer;
+    private static CardContainer _cardContainer;
+    private static readonly Card _card = new();
+    private static readonly GlobalCardsList _globalCardsList = new();
+    private static CardFormattedLevel cardFormattedLevel;
+    private static CardFormattedData cardFormattedData;
 
     public static void LoadData()
     {
-        GlobalCardsList globalCardsList = new();
-        Card card = new();
-        
-        cardContainer = new()
+        _cardContainer = new()
         {
-            all = new CardFormattedData[globalCardsList.Cards.Length],
+            all = new CardFormattedData[_globalCardsList.Cards.Length],
             selected = new CardFormattedData[4],
             collected = new(),
             notFound = new()
         };
 
-        UnityEngine.Debug.Log("globalCardsList: " + globalCardsList.Cards.Length);
-        UnityEngine.Debug.Log("Selecteds: " + card.Amount.Selecteds.Length);
-        UnityEngine.Debug.Log("Collecteds: " + card.Amount.Collecteds.Count);
-        
-        UnityEngine.Debug.Log("--------------------------------------------");
-
-        CardFormattedLevel cardFormattedLevel;
-        CardFormattedData cardFormattedData;
-
-        for (int i = 0; i < globalCardsList.Cards.Length; i++)
+        for (int i = 0; i < _globalCardsList.Cards.Length; i++)
         {
             //Если такой карты нет в коллекции игрока            
             cardFormattedData = new()
             {
-                cardInfo = globalCardsList.Cards[i],
+                cardInfo = _globalCardsList.Cards[i],
                 levelData = null,
                 cardStatus = CardStatus.NotFound
             };
-            cardContainer.all[i] = cardFormattedData;
-            cardContainer.notFound.Add(cardFormattedData);
+            _cardContainer.all[i] = cardFormattedData;
+            _cardContainer.notFound.Add(cardFormattedData);
 
             // Если такая карта есть в коллекции игрока
-            for (int j = 0; j < card.Amount.Collecteds.Count; j++)
+            for (int j = 0; j < _card.Amount.Collecteds.Count; j++)
             {
-                if (globalCardsList.Cards[i].ID == card.Amount.Collecteds[j].ID)
+                if (_globalCardsList.Cards[i].ID == _card.Amount.Collecteds[j].ID)
                 {
-                    cardContainer.notFound.Remove(cardFormattedData);
+                    _cardContainer.notFound.Remove(cardFormattedData);
 
                     cardFormattedLevel = new()
                     {
-                        Level = card.Amount.Collecteds[j].Level,
-                        Exp = card.Amount.Collecteds[j].Exp,
-                        EnoughtExp = card.Amount.Collecteds[j].Level * 2
+                        Level = _card.Amount.Collecteds[j].Level,
+                        Exp = _card.Amount.Collecteds[j].Exp,
+                        EnoughtExp = _card.Amount.Collecteds[j].Level * 2
                     };
 
                     cardFormattedData = new()
                     {
-                        cardInfo = globalCardsList.Cards[i],
+                        cardInfo = _globalCardsList.Cards[i],
                         levelData = cardFormattedLevel,
                         cardStatus = CardStatus.Collect
                     };
 
-                    cardContainer.all[i] = cardFormattedData;
-                    cardContainer.collected.Add(cardFormattedData);
+                    _cardContainer.all[i] = cardFormattedData;
+                    _cardContainer.collected.Add(cardFormattedData);
                 }
             }
 
             // Если такая карта выбрана игроком
-            for (int j = 0; j < card.Amount.Selecteds.Length; j++)
+            for (int j = 0; j < _card.Amount.Selecteds.Length; j++)
             {
-                if (globalCardsList.Cards[i].ID == card.Amount.Selecteds[j].ID)
+                if (_globalCardsList.Cards[i].ID == _card.Amount.Selecteds[j].ID)
                 {
                     cardFormattedLevel = new()
                     {
-                        Level = card.Amount.Collecteds[j].Level,
-                        Exp = card.Amount.Collecteds[j].Exp,
-                        EnoughtExp = card.Amount.Collecteds[j].Level * 2
+                        Level = _card.Amount.Collecteds[j].Level,
+                        Exp = _card.Amount.Collecteds[j].Exp,
+                        EnoughtExp = _card.Amount.Collecteds[j].Level * 2
                     };
 
                     cardFormattedData = new()
                     {
-                        cardInfo = globalCardsList.Cards[i],
+                        cardInfo = _globalCardsList.Cards[i],
                         levelData = cardFormattedLevel,
                         cardStatus = CardStatus.Select
                     };
 
-                    cardContainer.all[i] = cardFormattedData;
+                    _cardContainer.all[i] = cardFormattedData;
                 }
             }
         }
-
-        UnityEngine.Debug.Log("all: " + cardContainer.all.Length);
-        UnityEngine.Debug.Log("collected: " + cardContainer.collected.Count);
-        UnityEngine.Debug.Log("notFound: " + cardContainer.notFound.Count);
     }
 
-    // public static CardContainer Get()
-    // {
-    //     return null;
-    // }
+    public static void AddExp(int ID, int amount)
+    {
+        _cardContainer.collected[ID].levelData.Exp += amount;
+    }
+
+    public static void AddCard(int ID, int amount)
+    {
+        cardFormattedLevel = new()
+        {
+            Level = 1,
+            Exp = amount,
+            EnoughtExp = _card.Amount.Collecteds[ID].Level * 2
+        };
+
+        cardFormattedData = new()
+        {
+            cardInfo = _globalCardsList.Cards[ID],
+            levelData = cardFormattedLevel,
+            cardStatus = CardStatus.Collect
+        };
+
+        _cardContainer.collected.Add(cardFormattedData);
+
+        for (int i = 0; i < _cardContainer.notFound.Count; i++)
+        {
+            if (_cardContainer.notFound[i].cardInfo.ID == cardFormattedData.cardInfo.ID)
+            {
+                _cardContainer.notFound.RemoveAt(i);
+            }
+        }
+    }
+
+    public static CardContainer Get()
+    {
+        return _cardContainer;
+    }
+
+    public static void Save()
+    {
+        CardData cardData = new();
+
+        for (int i = 0; i < _cardContainer.selected.Length; i++)
+        {
+            cardData.Selecteds[i] = new Selected() { ID = _cardContainer.selected[i].cardInfo.ID };
+        }
+
+        for (int i = 0; i < _cardContainer.collected.Count; i++)
+        {
+            cardData.Collecteds.Add(_ = new Collect() 
+            {
+                ID = _cardContainer.collected[i].cardInfo.ID,
+                Level = _cardContainer.collected[i].levelData.Level,
+                Exp = _cardContainer.collected[i].levelData.Exp
+            });
+        }
+
+        _card.Amount = cardData;
+        _card.Save();
+    }
 }

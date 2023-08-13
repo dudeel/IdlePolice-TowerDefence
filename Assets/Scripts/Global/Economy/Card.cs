@@ -6,26 +6,18 @@ using System.Collections.Generic;
 public class Card
 {
     public readonly string KEY = "/Card.dat";
-    private readonly GlobalCardsList _globalCardsList = new();
-
     private readonly CardSerialize _cardSerialize = new();
-
     public CardData Amount = new();
 
     public Card()
     {
-        LoadData();
-    }
-
-    private void LoadData()
-    {
         Amount = _cardSerialize.LoadData(KEY);
     }
 
-    // public void Set(int value)
-    // {
-    //     _cardSerialize.SaveData(KEY, Amount);
-    // }
+    public void Save()
+    {
+        _cardSerialize.SaveData(KEY, Amount);
+    }
 }
 
 [System.Serializable]
