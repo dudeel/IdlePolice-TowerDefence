@@ -15,6 +15,7 @@ public class UI_CardsNotFoundList : MonoBehaviour
     {
         Card card = new();
         GlobalCardsList cardsList = new();
+        
         _uiCard = new CardInfo[cardsList.Cards.Length];
         
         for (int i = 0; i < cardsList.Cards.Length; i++)

@@ -11,7 +11,7 @@ public class CardInfo : ScriptableObject
 
     public GlobalRarity.Rarity Rarity;
     public GlobalAttackType.Type Type;
-    public GlobalAttackType.Type Target;
+    public GlobalTargetType.Target Target;
 
     public float Health;
     public float Damage;
