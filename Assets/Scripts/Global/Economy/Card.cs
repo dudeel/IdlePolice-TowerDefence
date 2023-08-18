@@ -39,17 +39,17 @@ public class CardData
     public List<Collect> Collecteds = new();
 }
 public class CardSerialize : SaveLoadAbstract
-{    
+{
     private string _path;
 
-	protected override void CreateFile(string key)
-	{
-		_path = Application.persistentDataPath + key;
+    protected override void CreateFile(string key)
+    {
+        _path = Application.persistentDataPath + key;
 
-		FileStream file = File.Create(_path);
+        FileStream file = File.Create(_path);
 
-		CardData data = new();
-        
+        CardData data = new();
+
         data.Selecteds[0] = new Selected() { ID = 0 };
         data.Selecteds[1] = new Selected() { ID = 1 };
         data.Selecteds[2] = new Selected() { ID = 7 };
@@ -63,41 +63,41 @@ public class CardSerialize : SaveLoadAbstract
         data.Collecteds.Add(_ = new Collect() { ID = 16, Level = 3, Exp = 21 });
         data.Collecteds.Add(_ = new Collect() { ID = 23, Level = 2, Exp = 5 });
 
-		BinaryFormatter formatter = new(); 
+        BinaryFormatter formatter = new();
         formatter.Serialize(file, data);
 
-		file.Close();
-	}
-	
-	public override void SaveData<CardData>(string key, CardData data)
-	{
-		_path = Application.persistentDataPath + key;
+        file.Close();
+    }
 
-		if (!File.Exists(_path))
-		{ CreateFile(key); }
-		
-    	FileStream _file = File.Open(_path, FileMode.Open);
+    public override void SaveData<CardData>(string key, CardData data)
+    {
+        _path = Application.persistentDataPath + key;
 
-		BinaryFormatter _formatter = new(); 
+        if (!File.Exists(_path))
+        { CreateFile(key); }
+
+        FileStream _file = File.Open(_path, FileMode.Open);
+
+        BinaryFormatter _formatter = new();
         _formatter.Serialize(_file, data);
-		
-		_file.Close();
-	}
 
-	public CardData LoadData(string key)
-	{
-		_path = Application.persistentDataPath + key;
+        _file.Close();
+    }
 
-		if (!File.Exists(_path))
-		{ CreateFile(key); }
-		
-    	FileStream file = File.Open(_path, FileMode.Open);
+    public CardData LoadData(string key)
+    {
+        _path = Application.persistentDataPath + key;
 
-		BinaryFormatter _formatter = new(); 
-		CardData data = (CardData)_formatter.Deserialize(file);
+        if (!File.Exists(_path))
+        { CreateFile(key); }
 
-		file.Close();
+        FileStream file = File.Open(_path, FileMode.Open);
+
+        BinaryFormatter _formatter = new();
+        CardData data = (CardData)_formatter.Deserialize(file);
+
+        file.Close();
 
         return data;
-	}
+    }
 }

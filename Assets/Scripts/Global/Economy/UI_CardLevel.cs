@@ -11,7 +11,7 @@ public class UI_CardLevel : MonoBehaviour
     [Header("Level Data (Object)")]
     [SerializeField] private Image _levelIcon;
     [SerializeField] private TextMeshProUGUI _levelText;
-    
+
     [Header("Exp Data (Object)")]
     [SerializeField] private Image _progressBar;
     [SerializeField] private Image _barIcon;
@@ -41,7 +41,7 @@ public class UI_CardLevel : MonoBehaviour
         if (Data.Level >= MAX_LEVEL)
         {
             _levelIcon.sprite = _maxIcon;
-            
+
             _barIcon.sprite = _maxBar;
             _progressBar.fillAmount = 1;
 
@@ -54,10 +54,10 @@ public class UI_CardLevel : MonoBehaviour
             _barIcon.sprite = _normalBar;
 
             _enoughtAmount = Data.Level * AMOUNT_MULTIPLY;
-            
+
             UpdateLevelText();
         }
-        
+
     }
 
     private void UpdateLevelText()

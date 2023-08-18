@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GlobalCardsList
 {
-    public CardInfo[] Cards {get; private set;}
+    public CardInfo[] Cards { get; private set; }
 
     public GlobalCardsList()
     {

@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public abstract class SaveLoadAbstract
 {
-	public virtual void SaveData<T>(string key, T _data) {}
+	public virtual void SaveData<T>(string key, T _data) { }
 	public virtual T LoadData<T>(string key) { return default; }
 
 	protected virtual void CreateFile(string key)
@@ -13,15 +13,15 @@ public abstract class SaveLoadAbstract
 		string path = GetPath(key);
 
 		FileStream file = File.Create(path);
-		
-		BinaryFormatter formatter = new(); 
-        formatter.Serialize(file, 0);
+
+		BinaryFormatter formatter = new();
+		formatter.Serialize(file, 0);
 
 		file.Close();
 	}
-	
-    protected string GetPath(string key)
-    {
-        return Application.persistentDataPath + key;
-    }
+
+	protected string GetPath(string key)
+	{
+		return Application.persistentDataPath + key;
+	}
 }

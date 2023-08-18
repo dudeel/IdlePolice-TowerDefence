@@ -14,20 +14,20 @@ public class UI_Currency : MonoBehaviour
     {
         SetData();
         UpdateText();
-        
+
         CardHandler.LoadData();
     }
-    
+
     private void SetData()
     {
         _data.Gold = _curencySerialize.Count().Gold;
         _data.Gem = _curencySerialize.Count().Gem;
     }
-        
+
 
     private void UpdateText()
     {
-        _goldsText.text =  _data.Gold.ToString();
-        _gemsText.text =  _data.Gem.ToString();
+        _goldsText.text = _data.Gold.ToString();
+        _gemsText.text = _data.Gem.ToString();
     }
 }

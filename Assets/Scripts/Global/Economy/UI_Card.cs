@@ -28,5 +28,5 @@ public class UI_Card : MonoBehaviour
     //     PopUp.OpenMenu();
     //     PopUp.SetHaveData(transform.GetComponent<UI_CardLevel>(), true);
     // }
-    
+
 }

@@ -156,7 +156,7 @@ public static class CardHandler
 
         for (int i = 0; i < _cardContainer.collected.Count; i++)
         {
-            cardData.Collecteds.Add(_ = new Collect() 
+            cardData.Collecteds.Add(_ = new Collect()
             {
                 ID = _cardContainer.collected[i].cardInfo.ID,
                 Level = _cardContainer.collected[i].levelData.Level,

@@ -20,7 +20,7 @@ public static class GlobalTargetType
             case Target.Random:
                 return "Random";
 
-            default: 
+            default:
                 Debug.LogError("This rarity is not found. Set default = First");
                 return "First";
         }
