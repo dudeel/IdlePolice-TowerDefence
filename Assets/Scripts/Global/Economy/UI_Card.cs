@@ -8,7 +8,9 @@ public class UI_Card : MonoBehaviour
 
     public GlobalAttackType GlobalCardType;
     public GlobalRarity GlobalRarity;
-    //public UI_CardPopUp PopUp;
+    public UI_CardPopUp PopUp;
+
+    public CardHandler.CardFormattedData CardFormattedData;
 
     [SerializeField] private Image _character;
     [SerializeField] private TextMeshProUGUI _name;
@@ -23,10 +25,30 @@ public class UI_Card : MonoBehaviour
         _type.sprite = GlobalCardType.GetTypeSprite(CharacterInfo.Type);
     }
 
-    // public void OpenPopUp()
-    // {
-    //     PopUp.OpenMenu();
-    //     PopUp.SetHaveData(transform.GetComponent<UI_CardLevel>(), true);
-    // }
+    public void OpenPopUp()
+    {
+        PopUp.OpenMenu();
+
+        switch (CardFormattedData.cardStatus)
+        {
+            case CardHandler.CardStatus.Select:
+                PopUp.SetCardData(CardFormattedData.cardInfo);
+                PopUp.SetLevelData(CardFormattedData.levelData);
+                break;
+            case CardHandler.CardStatus.Collect:
+                PopUp.SetCardData(CardFormattedData.cardInfo);
+                PopUp.SetLevelData(CardFormattedData.levelData);
+                PopUp.SetSelectButton();
+                break;
+            case CardHandler.CardStatus.NotFound:
+                PopUp.SetCardData(CardFormattedData.cardInfo);
+                break;
+
+            default:
+                PopUp.SetCardData(CardFormattedData.cardInfo);
+                Debug.LogError("This card status is not found. Set default = NotFound");
+                break;
+        }
+    }
 
 }
