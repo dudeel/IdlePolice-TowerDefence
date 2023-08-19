@@ -662,8 +662,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterInfo: {fileID: 11400000, guid: 96cb8a064bf06284bbe52a6521c03f6c, type: 2}
-  _globalCardType: {fileID: 0}
-  _globalRarity: {fileID: 0}
+  GlobalCardType: {fileID: 0}
+  GlobalRarity: {fileID: 0}
   _character: {fileID: 3655408008499964935}
   _name: {fileID: 3889290956808685001}
   _rarity: {fileID: 7899949284516464164}
@@ -686,14 +686,12 @@ MonoBehaviour:
   _barIcon: {fileID: 2422483506655281288}
   _expText: {fileID: 5055335803813305580}
   _normalIcon: {fileID: 21300000, guid: 0be14bbe5cf257a45a1dacb84c87a486, type: 3}
+  _compliteIcon: {fileID: 21300000, guid: a5cb77503dff980419042b1e13b7c088, type: 3}
   _maxIcon: {fileID: 21300000, guid: 38d460f4645ed1e44b458bb21bb04ac2, type: 3}
   _normalBar: {fileID: 21300000, guid: f778f2f8b0b209f4fb2fc4ee4cedb7af, type: 3}
+  _compliteBar: {fileID: 21300000, guid: 0a0c4df620af2b74dba8b0d7e5f0b46d, type: 3}
   _maxBar: {fileID: 21300000, guid: 280461dec0efcc64e8cd8c0f80bacc68, type: 3}
   isHave: 0
-  Data:
-    ID: 0
-    Level: 0
-    Amount: 0
 --- !u!1 &3676946473064598112
 GameObject:
   m_ObjectHideFlags: 0

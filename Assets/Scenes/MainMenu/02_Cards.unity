@@ -10115,8 +10115,10 @@ MonoBehaviour:
   _barIcon: {fileID: 2422483507915488504}
   _expText: {fileID: 5055335805271023772}
   _normalIcon: {fileID: 21300000, guid: 0be14bbe5cf257a45a1dacb84c87a486, type: 3}
+  _compliteIcon: {fileID: 0}
   _maxIcon: {fileID: 21300000, guid: 38d460f4645ed1e44b458bb21bb04ac2, type: 3}
   _normalBar: {fileID: 21300000, guid: f778f2f8b0b209f4fb2fc4ee4cedb7af, type: 3}
+  _compliteBar: {fileID: 0}
   _maxBar: {fileID: 21300000, guid: 280461dec0efcc64e8cd8c0f80bacc68, type: 3}
   isHave: 0
 --- !u!1 &5403957476398369454

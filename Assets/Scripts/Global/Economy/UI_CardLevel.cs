@@ -17,10 +17,12 @@ public class UI_CardLevel : MonoBehaviour
 
     [Header("Level Sprite")]
     [SerializeField] private Sprite _normalIcon;
+    [SerializeField] private Sprite _compliteIcon;
     [SerializeField] private Sprite _maxIcon;
 
     [Header("Exp Sprite")]
     [SerializeField] private Sprite _normalBar;
+    [SerializeField] private Sprite _compliteBar;
     [SerializeField] private Sprite _maxBar;
 
     public bool isHave = false;
@@ -42,6 +44,15 @@ public class UI_CardLevel : MonoBehaviour
 
             _levelText.text = MAX_LEVEL.ToString();
             _expText.text = "MAX";
+        }
+        else if (Data.Exp >= Data.EnoughtExp)
+        {
+            _levelIcon.sprite = _compliteIcon;
+            _barIcon.sprite = _compliteBar;
+
+            Data.EnoughtExp = Data.Level * 2;
+
+            UpdateLevelText();
         }
         else
         {
