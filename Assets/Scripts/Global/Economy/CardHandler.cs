@@ -47,7 +47,7 @@ public static class CardHandler
 
         for (int i = 0; i < _globalCardsList.Cards.Length; i++)
         {
-            //Если такой карты нет в коллекции игрока            
+            //Если такой карты нет в коллекции игрока         
             cardFormattedData = new()
             {
                 cardInfo = _globalCardsList.Cards[i],

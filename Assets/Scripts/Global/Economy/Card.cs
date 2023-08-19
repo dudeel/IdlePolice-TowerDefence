@@ -48,6 +48,13 @@ public class CardSerialize : SaveLoadAbstract
 
         FileStream file = File.Create(_path);
 
+        BinaryFormatter formatter = new();
+        formatter.Serialize(file, GetStartData());
+
+        file.Close();
+    }
+    private CardData GetStartData()
+    {
         CardData data = new();
 
         data.Selecteds[0] = new Selected() { ID = 0 };
@@ -63,10 +70,7 @@ public class CardSerialize : SaveLoadAbstract
         data.Collecteds.Add(_ = new Collect() { ID = 16, Level = 3, Exp = 21 });
         data.Collecteds.Add(_ = new Collect() { ID = 23, Level = 2, Exp = 5 });
 
-        BinaryFormatter formatter = new();
-        formatter.Serialize(file, data);
-
-        file.Close();
+        return data;
     }
 
     public override void SaveData<CardData>(string key, CardData data)

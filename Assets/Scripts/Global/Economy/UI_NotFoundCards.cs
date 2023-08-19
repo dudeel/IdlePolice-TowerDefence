@@ -1,18 +1,27 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class UI_NotFoundCards : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject _cardObject;
+    private List<CardHandler.CardFormattedData> _notFount;
+    private void Start()
     {
+        _notFount = CardHandler.Get().notFound;
 
-    }
+        foreach (var item in _notFount)
+        {
+            var card = Instantiate(_cardObject, transform);
 
-    // Update is called once per frame
-    void Update()
-    {
+            UI_Card cardUI = card.GetComponent<UI_Card>();
 
+            cardUI.CharacterInfo = item.cardInfo;
+            cardUI.GlobalCardType = transform.GetComponent<GlobalAttackType>();
+            cardUI.GlobalRarity = transform.GetComponent<GlobalRarity>();
+            cardUI.LoadData();
+
+            card.transform.GetChild(3).gameObject.SetActive(false);
+            card.transform.GetChild(6).gameObject.SetActive(true);
+        }
     }
 }
