@@ -21,6 +21,7 @@ public class UI_CardPopUp : MonoBehaviour
 
 
     [SerializeField] private UI_Card _uiCard;
+    [SerializeField] private UI_CardLevel _uiCardLevel;
 
     [SerializeField] private Image _rarityImage;
     [SerializeField] private TextMeshProUGUI _rarityText;
@@ -65,13 +66,18 @@ public class UI_CardPopUp : MonoBehaviour
         _rarityText.text = globalRarity.GetRarityText(data.Rarity);
         _rarityImage.sprite = globalRarity.GetRarityMiniSprite(data.Rarity);
 
+        _uiCard.transform.GetChild(3).gameObject.SetActive(false);
     }
 
     public void SetLevelData(CardHandler.CardFormattedLevel data)
     {
-        // Отображать уровень
-        // Установить уровень карты
-        // На кнопку установить сразу уровень карты
+        _uiCardLevel.Data = data;
+
+        _upgradeCardLevel = data.Level;
+        _upgradeCardText.text = data.Level.ToString();
+        _uiCardLevel.SetData();
+
+        _uiCard.transform.GetChild(3).gameObject.SetActive(true);
     }
 
     public void SetSelectButton()

@@ -33,7 +33,7 @@ public class UI_CardLevel : MonoBehaviour
         SetData();
     }
 
-    private void SetData()
+    public void SetData()
     {
         if (Data.Level >= MAX_LEVEL)
         {
