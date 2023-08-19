@@ -32,9 +32,9 @@ public class GlobalAttackType : MonoBehaviour
             case Type.Mage:
                 return Mage;
 
-            default: 
+            default:
                 Debug.LogError("This type character is not found. Set default = Melee");
-                return Melee; 
+                return Melee;
         }
     }
 }

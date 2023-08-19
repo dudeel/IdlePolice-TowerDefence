@@ -14,7 +14,7 @@ public class GlobalRarity : MonoBehaviour
     [SerializeField] private Sprite _rareCard;
     [SerializeField] private Sprite _magicCard;
     [SerializeField] private Sprite _legendaryCard;
-    
+
     [SerializeField] private Sprite _normalMini;
     [SerializeField] private Sprite _rareMini;
     [SerializeField] private Sprite _magicMini;
@@ -35,9 +35,9 @@ public class GlobalRarity : MonoBehaviour
             case Rarity.LEGENDARY:
                 return _legendaryCard;
 
-            default: 
+            default:
                 Debug.LogError("This rarity is not found. Set default = NORMAL (_normalCard)");
-                return _normalCard; 
+                return _normalCard;
         }
     }
 
@@ -56,9 +56,9 @@ public class GlobalRarity : MonoBehaviour
             case Rarity.LEGENDARY:
                 return _legendaryMini;
 
-            default: 
+            default:
                 Debug.LogError("This rarity is not found. Set default = NORMAL (_legendaryMini)");
-                return _normalMini; 
+                return _normalMini;
         }
     }
 
@@ -75,7 +75,7 @@ public class GlobalRarity : MonoBehaviour
             case Rarity.LEGENDARY:
                 return "Legendary";
 
-            default: 
+            default:
                 Debug.LogError("This rarity is not found. Set default = NORMAL (_legendaryMini)");
                 return "Normal";
         }
@@ -94,7 +94,7 @@ public class GlobalRarity : MonoBehaviour
             case Rarity.LEGENDARY:
                 return 3f;
 
-            default: 
+            default:
                 Debug.LogError("This rarity is not found. Set default = NORMAL (1.5f)");
                 return 1.5f;
         }
@@ -113,7 +113,7 @@ public class GlobalRarity : MonoBehaviour
             case Rarity.LEGENDARY:
                 return 5;
 
-            default: 
+            default:
                 Debug.LogError("This rarity is not found. Set default = NORMAL (40)");
                 return 40;
         }
