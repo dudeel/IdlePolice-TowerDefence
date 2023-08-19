@@ -1,20 +1,70 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UI_CardPopUp : MonoBehaviour
 {
+    [SerializeField] private GameObject _menuUI;
+
+    [SerializeField] private int _mergeLevel = 1;
+    [SerializeField] private int _upgradeCardLevel = 1;
+    [SerializeField] private int _upgradeLevel = 1;
+
+    [SerializeField] private Button _selectButtonUI;
+    [SerializeField] private Button _upgradeButtonUI;
+
+    [SerializeField] private Image _selectButton;
+    [SerializeField] private Image _upgradeButton;
+
+    [SerializeField] private Sprite _disableButtonSprite;
+    [SerializeField] private Sprite _enableButtonSprite;
+
+
+    [SerializeField] private UI_Card _uiCard;
+
+    [SerializeField] private Image _rarityImage;
+    [SerializeField] private TextMeshProUGUI _rarityText;
+
+    [SerializeField] private TextMeshProUGUI _descriptionText;
+
+    [SerializeField] private TextMeshProUGUI _upgradePriceText;
+
+    [SerializeField] private TextMeshProUGUI _targetText;
+    [SerializeField] private TextMeshProUGUI _healthText;
+    [SerializeField] private TextMeshProUGUI _damageText;
+    [SerializeField] private TextMeshProUGUI _attackIntervalText;
+
+    [SerializeField] private TextMeshProUGUI _mergeLevelText;
+    [SerializeField] private TextMeshProUGUI _upgradeCardText;
+    [SerializeField] private TextMeshProUGUI _upgradeText;
     public void OpenMenu()
     {
-        // Открыть меню
+        _menuUI.SetActive(true);
     }
 
     public void CloseMenu()
     {
-        // Закрыть меню
+        _menuUI.SetActive(false);
     }
 
     public void SetCardData(CardInfo data)
     {
-        // Отобразить характеристики карты
+        GlobalRarity globalRarity = transform.GetComponent<GlobalRarity>();
+
+        _uiCard.CharacterInfo = data;
+        _uiCard.GlobalCardType = transform.GetComponent<GlobalAttackType>();
+        _uiCard.GlobalRarity = globalRarity;
+        _uiCard.LoadData();
+
+        _descriptionText.text = data.Description;
+        _targetText.text = GlobalTargetType.GetTargetType(data.Target);
+        _healthText.text = data.Health.ToString();
+        _damageText.text = data.Damage.ToString();
+        _attackIntervalText.text = data.AttackInterval.ToString();
+
+        _rarityText.text = globalRarity.GetRarityText(data.Rarity);
+        _rarityImage.sprite = globalRarity.GetRarityMiniSprite(data.Rarity);
+
     }
 
     public void SetLevelData(CardHandler.CardFormattedLevel data)
@@ -28,4 +78,26 @@ public class UI_CardPopUp : MonoBehaviour
     {
         // Включить кнопку для выбора
     }
+
+    public void SelectCheck()
+    {
+
+    }
+
+    public void UpgradeCheck()
+    {
+
+    }
+
+    public void UpdateClick()
+    {
+
+    }
+
+    public void SelectClick()
+    {
+
+    }
+
+
 }

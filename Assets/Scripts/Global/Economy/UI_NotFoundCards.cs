@@ -5,6 +5,8 @@ public class UI_NotFoundCards : MonoBehaviour
 {
     [SerializeField] private GameObject _cardObject;
     private List<CardHandler.CardFormattedData> _notFount;
+
+    [SerializeField] private UI_CardPopUp _popUpUI;
     private void Start()
     {
         _notFount = CardHandler.Get().notFound;
@@ -14,6 +16,9 @@ public class UI_NotFoundCards : MonoBehaviour
             var card = Instantiate(_cardObject, transform);
 
             UI_Card cardUI = card.GetComponent<UI_Card>();
+
+            cardUI.CardFormattedData = item;
+            cardUI.PopUp = _popUpUI;
 
             cardUI.CharacterInfo = item.cardInfo;
             cardUI.GlobalCardType = transform.GetComponent<GlobalAttackType>();

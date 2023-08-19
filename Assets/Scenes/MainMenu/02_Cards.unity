@@ -513,7 +513,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 119135274}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 375928486}
+        m_TargetAssemblyTypeName: UI_CardPopUp, Assembly-CSharp
+        m_MethodName: CloseMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &119135274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -740,6 +752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardObject: {fileID: 3291326013479804457, guid: ff16cb53a3297e548a7a30142a0bc522, type: 3}
+  _popUpUI: {fileID: 375928486}
 --- !u!1 &168853294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,7 +1268,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 232313572}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 375928486}
+        m_TargetAssemblyTypeName: UI_CardPopUp, Assembly-CSharp
+        m_MethodName: CloseMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &232313572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1307,7 +1332,7 @@ GameObject:
   - component: {fileID: 273696237}
   - component: {fileID: 273696236}
   m_Layer: 5
-  m_Name: Button_Play (4)
+  m_Name: Button_Upgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1926,6 +1951,7 @@ GameObject:
   - component: {fileID: 375928482}
   - component: {fileID: 375928485}
   - component: {fileID: 375928484}
+  - component: {fileID: 375928486}
   m_Layer: 5
   m_Name: CardPopUp
   m_TagString: Untagged
@@ -1990,6 +2016,40 @@ MonoBehaviour:
   _rareMini: {fileID: 21300000, guid: 491e1ba513c9c5145898c5d42041924e, type: 3}
   _magicMini: {fileID: 21300000, guid: 3a496148efdb68b49b8eb6a04c9cffe7, type: 3}
   _legendaryMini: {fileID: 21300000, guid: e8b4981d041093b48a4b7ffb44490753, type: 3}
+--- !u!114 &375928486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375928481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed44179c84bd3c42ab0165bf4a1db59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuUI: {fileID: 1718308565}
+  _mergeLevel: 1
+  _upgradeCardLevel: 1
+  _upgradeLevel: 1
+  _selectButtonUI: {fileID: 168853296}
+  _upgradeButtonUI: {fileID: 1462295698}
+  _selectButton: {fileID: 168853297}
+  _upgradeButton: {fileID: 1462295699}
+  _disableButtonSprite: {fileID: 21300000, guid: 5d150b99b05f34a459530f2512ac1ee7, type: 3}
+  _enableButtonSprite: {fileID: 21300000, guid: ce20e0e33bce08845946a61006fada39, type: 3}
+  _uiCard: {fileID: 8355985686408838362}
+  _rarityImage: {fileID: 490082634}
+  _rarityText: {fileID: 2102509912}
+  _descriptionText: {fileID: 1453321516}
+  _upgradePriceText: {fileID: 299429667}
+  _targetText: {fileID: 551651170}
+  _healthText: {fileID: 656619706}
+  _damageText: {fileID: 1946871965}
+  _attackIntervalText: {fileID: 183364891}
+  _mergeLevelText: {fileID: 2129784076}
+  _upgradeCardText: {fileID: 1829814254}
+  _upgradeText: {fileID: 419411415}
 --- !u!1 &400642813
 GameObject:
   m_ObjectHideFlags: 0
@@ -2603,7 +2663,7 @@ GameObject:
   - component: {fileID: 552828149}
   - component: {fileID: 552828148}
   m_Layer: 5
-  m_Name: Button_Play (3)
+  m_Name: Button_UpgradeInGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3783,6 +3843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardObject: {fileID: 3291326013479804457, guid: ff16cb53a3297e548a7a30142a0bc522, type: 3}
+  _popUpUI: {fileID: 375928486}
 --- !u!1 &850385117
 GameObject:
   m_ObjectHideFlags: 0
@@ -5226,6 +5287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardObject: {fileID: 3291326013479804457, guid: ff16cb53a3297e548a7a30142a0bc522, type: 3}
+  _popUpUI: {fileID: 375928486}
 --- !u!1 &1109679448
 GameObject:
   m_ObjectHideFlags: 0
@@ -5925,7 +5987,7 @@ GameObject:
   - component: {fileID: 1248371604}
   - component: {fileID: 1248371603}
   m_Layer: 5
-  m_Name: Button_Play (2)
+  m_Name: Button_Merge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5949,7 +6011,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 133.33331, y: -90}
+  m_AnchoredPosition: {x: 133.33333, y: -90}
   m_SizeDelta: {x: 240, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1248371603
@@ -10556,6 +10618,7 @@ MonoBehaviour:
   CharacterInfo: {fileID: 11400000, guid: 96cb8a064bf06284bbe52a6521c03f6c, type: 2}
   GlobalCardType: {fileID: 0}
   GlobalRarity: {fileID: 0}
+  PopUp: {fileID: 0}
   _character: {fileID: 3655408006963073143}
   _name: {fileID: 3889290956181977529}
   _rarity: {fileID: 7899949284610652756}
