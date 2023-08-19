@@ -5471,6 +5471,7 @@ GameObject:
   - component: {fileID: 1169511705}
   - component: {fileID: 1169511704}
   - component: {fileID: 1169511706}
+  - component: {fileID: 1169511707}
   m_Layer: 5
   m_Name: Title_Collections
   m_TagString: Untagged
@@ -5557,6 +5558,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1169511707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169511702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8651a99f0151494ab4a73a788daa325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 1046631875}
 --- !u!1 &1175213232
 GameObject:
   m_ObjectHideFlags: 0
