@@ -74,7 +74,7 @@ public class UI_CardPopUp : MonoBehaviour
         _uiCardLevel.Data = data;
 
         _upgradeCardLevel = data.Level;
-        _upgradeCardText.text = data.Level.ToString();
+        _upgradeCardText.text = $"L. {data.Level}";
         _uiCardLevel.SetData();
 
         _uiCard.transform.GetChild(3).gameObject.SetActive(true);
