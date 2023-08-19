@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public static class CardHandler
 {
     public enum CardStatus
@@ -103,6 +105,7 @@ public static class CardHandler
                     };
 
                     _cardContainer.all[i] = cardFormattedData;
+                    _cardContainer.selected[j] = cardFormattedData;
                 }
             }
         }
