@@ -32,20 +32,18 @@ public class UI_Card : MonoBehaviour
         switch (CardFormattedData.cardStatus)
         {
             case CardHandler.CardStatus.Select:
-                PopUp.SetCardData(CardFormattedData.cardInfo);
-                PopUp.SetLevelData(CardFormattedData);
+                PopUp.SetCardData(CardFormattedData);
                 break;
             case CardHandler.CardStatus.Collect:
-                PopUp.SetCardData(CardFormattedData.cardInfo);
-                PopUp.SetLevelData(CardFormattedData);
+                PopUp.SetCardData(CardFormattedData);
                 PopUp.SetSelectButton();
                 break;
             case CardHandler.CardStatus.NotFound:
-                PopUp.SetCardData(CardFormattedData.cardInfo);
+                PopUp.SetCardData(CardFormattedData);
                 break;
 
             default:
-                PopUp.SetCardData(CardFormattedData.cardInfo);
+                PopUp.SetCardData(CardFormattedData);
                 Debug.LogError("This card status is not found. Set default = NotFound");
                 break;
         }

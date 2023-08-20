@@ -38,6 +38,8 @@ public class UI_CardPopUp : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _mergeLevelText;
     [SerializeField] private TextMeshProUGUI _upgradeCardText;
     [SerializeField] private TextMeshProUGUI _upgradeText;
+
+    [SerializeField] private CardHandler.CardFormattedData _cardFormattedData;
     public void OpenMenu()
     {
         _menuUI.SetActive(true);
@@ -48,37 +50,56 @@ public class UI_CardPopUp : MonoBehaviour
         _menuUI.SetActive(false);
     }
 
-    public void SetCardData(CardInfo data)
+    public void SetCardData(CardHandler.CardFormattedData data)
     {
         GlobalRarity globalRarity = transform.GetComponent<GlobalRarity>();
+        _cardFormattedData = data;
 
-        _uiCard.CharacterInfo = data;
+        _uiCard.CharacterInfo = _cardFormattedData.cardInfo;
         _uiCard.GlobalCardType = transform.GetComponent<GlobalAttackType>();
         _uiCard.GlobalRarity = globalRarity;
         _uiCard.LoadData();
 
-        _descriptionText.text = data.Description;
-        _targetText.text = GlobalTargetType.GetTargetType(data.Target);
-        _healthText.text = data.Health.ToString();
-        _damageText.text = data.Damage.ToString();
-        _attackIntervalText.text = data.AttackInterval.ToString();
+        _descriptionText.text = _cardFormattedData.cardInfo.Description;
+        _targetText.text = GlobalTargetType.GetTargetType(_cardFormattedData.cardInfo.Target);
+        _healthText.text = _cardFormattedData.cardInfo.Health.ToString();
+        _damageText.text = _cardFormattedData.cardInfo.Damage.ToString();
+        _attackIntervalText.text = _cardFormattedData.cardInfo.AttackInterval.ToString();
 
-        _rarityText.text = globalRarity.GetRarityText(data.Rarity);
-        _rarityImage.sprite = globalRarity.GetRarityMiniSprite(data.Rarity);
+        _rarityText.text = globalRarity.GetRarityText(_cardFormattedData.cardInfo.Rarity);
+        _rarityImage.sprite = globalRarity.GetRarityMiniSprite(_cardFormattedData.cardInfo.Rarity);
 
         _uiCard.transform.GetChild(3).gameObject.SetActive(false);
+
+        if (_cardFormattedData.levelData != null) SetLevelData();
     }
 
-    public void SetLevelData(CardHandler.CardFormattedData data)
+    public void SetLevelData()
     {
         _uiCardLevel.GlobalRarity = transform.GetComponent<GlobalRarity>();
-        _uiCardLevel.Data = data;
+        _uiCardLevel.Data = _cardFormattedData;
 
-        _upgradeCardLevel = data.levelData.Level;
-        _upgradeCardText.text = $"L. {data.levelData.Level}";
+        _upgradeCardLevel = _cardFormattedData.levelData.Level;
+        _upgradeCardText.text = $"L. {_cardFormattedData.levelData.Level}";
         _uiCardLevel.SetData();
 
         _uiCard.transform.GetChild(3).gameObject.SetActive(true);
+    }
+
+    public void MergeButtonClick()
+    {
+        _mergeLevel++;
+        _mergeLevelText.text = $"L. {_mergeLevel}";
+    }
+    public void UpgradeCardButtonClick()
+    {
+        _upgradeCardLevel++;
+        _upgradeCardText.text = $"L. {_upgradeCardLevel}";
+    }
+    public void UpgradeButtonClick()
+    {
+        _upgradeLevel++;
+        _upgradeText.text = $"L. {_upgradeLevel}";
     }
 
     public void SetSelectButton()
@@ -105,6 +126,4 @@ public class UI_CardPopUp : MonoBehaviour
     {
 
     }
-
-
 }
