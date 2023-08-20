@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UI_CardPopUp : MonoBehaviour
 {
@@ -114,9 +115,14 @@ public class UI_CardPopUp : MonoBehaviour
     private void SetStatsText()
     {
         _targetText.text = GlobalTargetType.GetTargetType(_cardFormattedData.cardInfo.Target);
-        _healthText.text = _cardFormattedData.cardInfo.Health.ToString();
-        _damageText.text = _cardFormattedData.cardInfo.Damage.ToString();
-        _attackIntervalText.text = $"{_cardFormattedData.cardInfo.AttackInterval}s";
+
+        float health = _cardFormattedData.cardInfo.Health + ((_mergeLevel - 1) * 1.2f) + ((_upgradeCardLevel - 1) * 1.1f) + ((_upgradeLevel - 1) * 1.15f);
+        float damage = _cardFormattedData.cardInfo.Health + ((_mergeLevel - 1) * 1.08f) + ((_upgradeCardLevel - 1) * 1.02f) + ((_upgradeLevel - 1) * 1.05f);
+        float attackInterval = _cardFormattedData.cardInfo.Health - ((_mergeLevel - 1) * 0.1f) - ((_upgradeCardLevel - 1) * 0.02f) - ((_upgradeLevel - 1) * 0.04f);
+
+        _healthText.text = Math.Round(health, 1).ToString();
+        _damageText.text = Math.Round(damage, 1).ToString();
+        _attackIntervalText.text = $"{Math.Round(attackInterval, 2)}s";
     }
 
     private void SetButtonsText()
@@ -135,6 +141,7 @@ public class UI_CardPopUp : MonoBehaviour
         else _mergeLevel++;
 
         _mergeLevelText.text = $"L. {_mergeLevel}";
+        SetStatsText();
     }
 
     public void UpgradeCardButtonClick()
@@ -143,6 +150,7 @@ public class UI_CardPopUp : MonoBehaviour
         else _upgradeCardLevel++;
 
         _upgradeCardText.text = $"L. {_upgradeCardLevel}";
+        SetStatsText();
     }
 
     public void UpgradeButtonClick()
@@ -151,6 +159,7 @@ public class UI_CardPopUp : MonoBehaviour
         else _upgradeLevel++;
 
         _upgradeText.text = $"L. {_upgradeLevel}";
+        SetStatsText();
     }
 
     public void SetSelectButton()
