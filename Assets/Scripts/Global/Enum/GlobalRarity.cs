@@ -105,17 +105,17 @@ public class GlobalRarity : MonoBehaviour
         switch (m_rarity)
         {
             case Rarity.NORMAL:
-                return 40;
+                return 20;
             case Rarity.RARE:
-                return 24;
+                return 15;
             case Rarity.MAGIC:
-                return 12;
+                return 10;
             case Rarity.LEGENDARY:
                 return 5;
 
             default:
                 Debug.LogError("This rarity is not found. Set default = NORMAL (40)");
-                return 40;
+                return 20;
         }
     }
 }

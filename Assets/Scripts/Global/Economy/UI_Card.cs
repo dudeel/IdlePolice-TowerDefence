@@ -33,11 +33,11 @@ public class UI_Card : MonoBehaviour
         {
             case CardHandler.CardStatus.Select:
                 PopUp.SetCardData(CardFormattedData.cardInfo);
-                PopUp.SetLevelData(CardFormattedData.levelData);
+                PopUp.SetLevelData(CardFormattedData);
                 break;
             case CardHandler.CardStatus.Collect:
                 PopUp.SetCardData(CardFormattedData.cardInfo);
-                PopUp.SetLevelData(CardFormattedData.levelData);
+                PopUp.SetLevelData(CardFormattedData);
                 PopUp.SetSelectButton();
                 break;
             case CardHandler.CardStatus.NotFound:

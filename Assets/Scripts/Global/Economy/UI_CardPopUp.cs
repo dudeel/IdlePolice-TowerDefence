@@ -69,12 +69,13 @@ public class UI_CardPopUp : MonoBehaviour
         _uiCard.transform.GetChild(3).gameObject.SetActive(false);
     }
 
-    public void SetLevelData(CardHandler.CardFormattedLevel data)
+    public void SetLevelData(CardHandler.CardFormattedData data)
     {
+        _uiCardLevel.GlobalRarity = transform.GetComponent<GlobalRarity>();
         _uiCardLevel.Data = data;
 
-        _upgradeCardLevel = data.Level;
-        _upgradeCardText.text = $"L. {data.Level}";
+        _upgradeCardLevel = data.levelData.Level;
+        _upgradeCardText.text = $"L. {data.levelData.Level}";
         _uiCardLevel.SetData();
 
         _uiCard.transform.GetChild(3).gameObject.SetActive(true);

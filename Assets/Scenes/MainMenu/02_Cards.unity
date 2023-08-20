@@ -5780,6 +5780,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card
       objectReference: {fileID: 0}
+    - target: {fileID: 6122907189904627634, guid: ff16cb53a3297e548a7a30142a0bc522, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8475254515278615529, guid: ff16cb53a3297e548a7a30142a0bc522, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6136,7 +6140,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 133.33333, y: -90}
+  m_AnchoredPosition: {x: 133.33331, y: -90}
   m_SizeDelta: {x: 240, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1248371603

@@ -25,7 +25,8 @@ public class UI_SelectedCards : MonoBehaviour
             cardUI.GlobalRarity = transform.GetComponent<GlobalRarity>();
             cardUI.LoadData();
 
-            cardUILevel.Data = item.levelData;
+            cardUILevel.GlobalRarity = transform.GetComponent<GlobalRarity>();
+            cardUILevel.Data = item;
         }
     }
 }

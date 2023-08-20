@@ -4,8 +4,6 @@ using TMPro;
 
 public class UI_CardLevel : MonoBehaviour
 {
-    private const int MAX_LEVEL = 40;
-
     [Header("Level Data (Object)")]
     [SerializeField] private Image _levelIcon;
     [SerializeField] private TextMeshProUGUI _levelText;
@@ -25,32 +23,32 @@ public class UI_CardLevel : MonoBehaviour
     [SerializeField] private Sprite _compliteBar;
     [SerializeField] private Sprite _maxBar;
 
-    public bool isHave = false;
-    public CardHandler.CardFormattedLevel Data = new();
+    public CardHandler.CardFormattedData Data;
+    public GlobalRarity GlobalRarity = null;
 
     void Start()
     {
-        SetData();
+        if (GlobalRarity) SetData();
     }
 
     public void SetData()
     {
-        if (Data.Level >= MAX_LEVEL)
+        if (Data.levelData.Level >= GlobalRarity.GetMaxLevelUpgrade(Data.cardInfo.Rarity))
         {
             _levelIcon.sprite = _maxIcon;
 
             _barIcon.sprite = _maxBar;
             _progressBar.fillAmount = 1;
 
-            _levelText.text = MAX_LEVEL.ToString();
+            _levelText.text = GlobalRarity.GetMaxLevelUpgrade(Data.cardInfo.Rarity).ToString();
             _expText.text = "MAX";
         }
-        else if (Data.Exp >= Data.EnoughtExp)
+        else if (Data.levelData.Exp >= Data.levelData.EnoughtExp)
         {
             _levelIcon.sprite = _compliteIcon;
             _barIcon.sprite = _compliteBar;
 
-            Data.EnoughtExp = Data.Level * 2;
+            Data.levelData.EnoughtExp = Data.levelData.Level * 2;
 
             UpdateLevelText();
         }
@@ -59,7 +57,7 @@ public class UI_CardLevel : MonoBehaviour
             _levelIcon.sprite = _normalIcon;
             _barIcon.sprite = _normalBar;
 
-            Data.EnoughtExp = Data.Level * 2;
+            Data.levelData.EnoughtExp = Data.levelData.Level * 2;
 
             UpdateLevelText();
         }
@@ -67,14 +65,14 @@ public class UI_CardLevel : MonoBehaviour
 
     private void UpdateLevelText()
     {
-        _levelText.SetText(Data.Level.ToString());
-        _expText.SetText($"{Data.Exp}/{Data.EnoughtExp}");
+        _levelText.SetText(Data.levelData.Level.ToString());
+        _expText.SetText($"{Data.levelData.Exp}/{Data.levelData.EnoughtExp}");
 
         SetProgressFill();
     }
 
     private void SetProgressFill()
     {
-        _progressBar.fillAmount = Mathf.InverseLerp(0f, Data.EnoughtExp, Data.Exp);
+        _progressBar.fillAmount = Mathf.InverseLerp(0f, Data.levelData.EnoughtExp, Data.levelData.Exp);
     }
 }
