@@ -28,7 +28,7 @@ public class UI_Card : MonoBehaviour
     public void OpenPopUp()
     {
         PopUp.OpenMenu();
-        PopUp.SetCardData(CardFormattedData);
+        PopUp.SetMenuData(CardFormattedData);
     }
 
 }
