@@ -28,25 +28,7 @@ public class UI_Card : MonoBehaviour
     public void OpenPopUp()
     {
         PopUp.OpenMenu();
-
-        switch (CardFormattedData.cardStatus)
-        {
-            case CardHandler.CardStatus.Select:
-                PopUp.SetCardData(CardFormattedData);
-                break;
-            case CardHandler.CardStatus.Collect:
-                PopUp.SetCardData(CardFormattedData);
-                PopUp.SetSelectButton();
-                break;
-            case CardHandler.CardStatus.NotFound:
-                PopUp.SetCardData(CardFormattedData);
-                break;
-
-            default:
-                PopUp.SetCardData(CardFormattedData);
-                Debug.LogError("This card status is not found. Set default = NotFound");
-                break;
-        }
+        PopUp.SetCardData(CardFormattedData);
     }
 
 }

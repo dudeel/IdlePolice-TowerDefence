@@ -40,9 +40,14 @@ public class UI_CardPopUp : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _upgradeText;
 
     [SerializeField] private CardHandler.CardFormattedData _cardFormattedData;
+    private GlobalRarity _globalRarity;
     public void OpenMenu()
     {
         _menuUI.SetActive(true);
+
+        _mergeLevelText.text = $"L. {_mergeLevel}";
+        _upgradeCardText.text = $"L. {_upgradeCardLevel}";
+        _upgradeText.text = $"L. {_upgradeLevel}";
     }
 
     public void CloseMenu()
@@ -52,12 +57,12 @@ public class UI_CardPopUp : MonoBehaviour
 
     public void SetCardData(CardHandler.CardFormattedData data)
     {
-        GlobalRarity globalRarity = transform.GetComponent<GlobalRarity>();
+        _globalRarity = transform.GetComponent<GlobalRarity>();
         _cardFormattedData = data;
 
         _uiCard.CharacterInfo = _cardFormattedData.cardInfo;
         _uiCard.GlobalCardType = transform.GetComponent<GlobalAttackType>();
-        _uiCard.GlobalRarity = globalRarity;
+        _uiCard.GlobalRarity = _globalRarity;
         _uiCard.LoadData();
 
         _descriptionText.text = _cardFormattedData.cardInfo.Description;
@@ -66,17 +71,26 @@ public class UI_CardPopUp : MonoBehaviour
         _damageText.text = _cardFormattedData.cardInfo.Damage.ToString();
         _attackIntervalText.text = _cardFormattedData.cardInfo.AttackInterval.ToString();
 
-        _rarityText.text = globalRarity.GetRarityText(_cardFormattedData.cardInfo.Rarity);
-        _rarityImage.sprite = globalRarity.GetRarityMiniSprite(_cardFormattedData.cardInfo.Rarity);
+        _rarityText.text = _globalRarity.GetRarityText(_cardFormattedData.cardInfo.Rarity);
+        _rarityImage.sprite = _globalRarity.GetRarityMiniSprite(_cardFormattedData.cardInfo.Rarity);
 
         _uiCard.transform.GetChild(3).gameObject.SetActive(false);
 
-        if (_cardFormattedData.levelData != null) SetLevelData();
+        if (_cardFormattedData.levelData != null)
+        {
+            SetLevelData();
+            _rarityImage.transform.localPosition = new Vector3(transform.localPosition.x, 127, transform.localPosition.z);
+        }
+        else
+        {
+            _rarityImage.transform.localPosition = new Vector3(transform.localPosition.x, 110, transform.localPosition.z);
+        }
+        SetSelectButton();
     }
 
     public void SetLevelData()
     {
-        _uiCardLevel.GlobalRarity = transform.GetComponent<GlobalRarity>();
+        _uiCardLevel.GlobalRarity = _globalRarity;
         _uiCardLevel.Data = _cardFormattedData;
 
         _upgradeCardLevel = _cardFormattedData.levelData.Level;
@@ -86,28 +100,47 @@ public class UI_CardPopUp : MonoBehaviour
         _uiCard.transform.GetChild(3).gameObject.SetActive(true);
     }
 
+    private int MaxMerge = 6;
     public void MergeButtonClick()
     {
-        _mergeLevel++;
+        if (_mergeLevel >= MaxMerge) _mergeLevel = 1;
+        else _mergeLevel++;
+
         _mergeLevelText.text = $"L. {_mergeLevel}";
     }
+
     public void UpgradeCardButtonClick()
     {
-        _upgradeCardLevel++;
+        if (_upgradeCardLevel >= _globalRarity.GetMaxLevelUpgrade(_cardFormattedData.cardInfo.Rarity)) _upgradeCardLevel = 1;
+        else _upgradeCardLevel++;
+
         _upgradeCardText.text = $"L. {_upgradeCardLevel}";
     }
+
+    private int MaxUpgrade = 10;
     public void UpgradeButtonClick()
     {
-        _upgradeLevel++;
+        if (_upgradeLevel >= MaxUpgrade) _upgradeLevel = 1;
+        else _upgradeLevel++;
+
         _upgradeText.text = $"L. {_upgradeLevel}";
     }
 
     public void SetSelectButton()
     {
-        // Включить кнопку для выбора
+        if (_cardFormattedData.cardStatus == CardHandler.CardStatus.Collect)
+        {
+            _selectButtonUI.enabled = true;
+            _selectButton.sprite = _enableButtonSprite;
+        }
+        else
+        {
+            _selectButtonUI.enabled = false;
+            _selectButton.sprite = _disableButtonSprite;
+        }
     }
 
-    public void SelectCheck()
+    public void SelectClick()
     {
 
     }
@@ -118,11 +151,6 @@ public class UI_CardPopUp : MonoBehaviour
     }
 
     public void UpdateClick()
-    {
-
-    }
-
-    public void SelectClick()
     {
 
     }

@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public static class CardHandler
 {
     public enum CardStatus
@@ -55,7 +57,6 @@ public static class CardHandler
                 cardStatus = CardStatus.NotFound
             };
             _cardContainer.all[i] = cardFormattedData;
-            _cardContainer.notFound.Add(cardFormattedData);
 
             // Если такая карта есть в коллекции игрока
             for (int j = 0; j < _card.Amount.Collecteds.Count; j++)
@@ -79,7 +80,6 @@ public static class CardHandler
                     };
 
                     _cardContainer.all[i] = cardFormattedData;
-                    _cardContainer.collected.Add(cardFormattedData);
                 }
             }
 
@@ -103,8 +103,28 @@ public static class CardHandler
                     };
 
                     _cardContainer.all[i] = cardFormattedData;
-                    _cardContainer.selected[j] = cardFormattedData;
                 }
+            }
+        }
+
+        int index = 0;
+        foreach (var item in _cardContainer.all)
+        {
+            switch (item.cardStatus)
+            {
+                case CardStatus.Select:
+                    _cardContainer.selected[index] = item;
+                    _cardContainer.collected.Add(item);
+                    index++;
+                    break;
+
+                case CardStatus.Collect:
+                    _cardContainer.collected.Add(item);
+                    break;
+
+                case CardStatus.NotFound:
+                    _cardContainer.notFound.Add(item);
+                    break;
             }
         }
     }
