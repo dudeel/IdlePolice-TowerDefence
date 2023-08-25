@@ -63,7 +63,7 @@ public class CardSerialize : SaveLoadAbstract
         data.Selecteds[3] = new Selected() { ID = 8 };
 
         data.Collecteds.Add(_ = new Collect() { ID = 0, Level = 1, Exp = 0 });
-        data.Collecteds.Add(_ = new Collect() { ID = 1, Level = 18, Exp = 1 });
+        data.Collecteds.Add(_ = new Collect() { ID = 1, Level = 20, Exp = 0 });
         data.Collecteds.Add(_ = new Collect() { ID = 7, Level = 13, Exp = 42 });
         data.Collecteds.Add(_ = new Collect() { ID = 8, Level = 3, Exp = 2 });
         data.Collecteds.Add(_ = new Collect() { ID = 13, Level = 1, Exp = 4 });

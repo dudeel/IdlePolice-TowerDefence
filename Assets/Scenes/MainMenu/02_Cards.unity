@@ -2041,12 +2041,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _menuUI: {fileID: 1718308565}
+  _upgradeCardLevelButtonUI: {fileID: 273696236}
+  _upgradeCardLevelButton: {fileID: 273696237}
   _selectButtonUI: {fileID: 168853296}
   _upgradeButtonUI: {fileID: 1462295698}
   _selectButton: {fileID: 168853297}
   _upgradeButton: {fileID: 1462295699}
   _disableButtonSprite: {fileID: 21300000, guid: 5d150b99b05f34a459530f2512ac1ee7, type: 3}
   _enableButtonSprite: {fileID: 21300000, guid: ce20e0e33bce08845946a61006fada39, type: 3}
+  _blueButtonSprite: {fileID: 21300000, guid: ef2c20610cdedc644b55522ca539e961, type: 3}
   _uiCard: {fileID: 1192929372}
   _uiCardLevel: {fileID: 1192929370}
   _rarityImage: {fileID: 490082634}
@@ -2228,8 +2231,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -65, y: -50}
-  m_SizeDelta: {x: 130, y: 80}
+  m_AnchoredPosition: {x: -75, y: -50}
+  m_SizeDelta: {x: 110, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &419411415
 MonoBehaviour:
@@ -2281,9 +2284,9 @@ MonoBehaviour:
   m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 36
+  m_fontSizeMax: 48
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -8290,8 +8293,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -65, y: -50}
-  m_SizeDelta: {x: 130, y: 80}
+  m_AnchoredPosition: {x: -75, y: -50}
+  m_SizeDelta: {x: 110, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1829814254
 MonoBehaviour:
@@ -8313,7 +8316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: L. 4
+  m_text: L. 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
   m_sharedMaterial: {fileID: 2830636965969884548, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
@@ -8343,9 +8346,9 @@ MonoBehaviour:
   m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 36
+  m_fontSizeMax: 48
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -9504,8 +9507,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -65, y: -50}
-  m_SizeDelta: {x: 130, y: 80}
+  m_AnchoredPosition: {x: -75, y: -50}
+  m_SizeDelta: {x: 110, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2129784076
 MonoBehaviour:
@@ -9557,9 +9560,9 @@ MonoBehaviour:
   m_fontSize: 48
   m_fontSizeBase: 48
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 36
+  m_fontSizeMax: 48
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512

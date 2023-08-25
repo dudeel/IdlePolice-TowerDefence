@@ -19,6 +19,9 @@ public class UI_CardPopUp : MonoBehaviour
 
     [SerializeField] private GameObject _menuUI;
 
+    [SerializeField] private Button _upgradeCardLevelButtonUI;
+    [SerializeField] private Image _upgradeCardLevelButton;
+
     [SerializeField] private Button _selectButtonUI;
     [SerializeField] private Button _upgradeButtonUI;
 
@@ -27,6 +30,7 @@ public class UI_CardPopUp : MonoBehaviour
 
     [SerializeField] private Sprite _disableButtonSprite;
     [SerializeField] private Sprite _enableButtonSprite;
+    [SerializeField] private Sprite _blueButtonSprite;
 
 
     [SerializeField] private UI_Card _uiCard;
@@ -113,8 +117,20 @@ public class UI_CardPopUp : MonoBehaviour
 
             _startUpgradeCardLevel = _cardFormattedData.levelData.Level;
             _upgradeCardLevel = _startUpgradeCardLevel;
-            _upgradeCardText.text = $"L. {_cardFormattedData.levelData.Level}";
             _uiCardLevel.SetData();
+
+            if (_startUpgradeCardLevel >= _globalRarity.GetMaxLevelUpgrade(_cardFormattedData.cardInfo.Rarity))
+            {
+                _upgradeCardLevelButtonUI.enabled = false;
+                _upgradeCardLevelButton.sprite = _disableButtonSprite;
+                _upgradeCardText.text = $"MAX";
+            }
+            else
+            {
+                _upgradeCardLevelButtonUI.enabled = false;
+                _upgradeCardLevelButton.sprite = _blueButtonSprite;
+                _upgradeCardText.text = $"L. {_upgradeCardLevel}";
+            }
 
             _uiCard.transform.GetChild(3).gameObject.SetActive(true);
         }
