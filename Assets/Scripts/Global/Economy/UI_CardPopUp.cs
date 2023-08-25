@@ -10,6 +10,7 @@ public class UI_CardPopUp : MonoBehaviour
     private const int MAX_UPGRADE_IN_GAME_LEVEL = 10;
 
     private int _mergeLevel = 1;
+    private int _startUpgradeCardLevel = 1;
     private int _upgradeCardLevel = 1;
     private int _upgradeLevel = 1;
 
@@ -98,13 +99,20 @@ public class UI_CardPopUp : MonoBehaviour
     private void SetLevelData()
     {
         if (_cardFormattedData.levelData == null)
+        {
+            _startUpgradeCardLevel = 1;
+            _upgradeCardLevel = _startUpgradeCardLevel;
+            _upgradeCardText.text = $"L. {_upgradeCardLevel}";
+
             _uiCard.transform.GetChild(3).gameObject.SetActive(false);
+        }
         else
         {
             _uiCardLevel.GlobalRarity = _globalRarity;
             _uiCardLevel.Data = _cardFormattedData;
 
-            _upgradeCardLevel = _cardFormattedData.levelData.Level;
+            _startUpgradeCardLevel = _cardFormattedData.levelData.Level;
+            _upgradeCardLevel = _startUpgradeCardLevel;
             _upgradeCardText.text = $"L. {_cardFormattedData.levelData.Level}";
             _uiCardLevel.SetData();
 
@@ -116,9 +124,12 @@ public class UI_CardPopUp : MonoBehaviour
     {
         _targetText.text = GlobalTargetType.GetTargetType(_cardFormattedData.cardInfo.Target);
 
-        float health = _cardFormattedData.cardInfo.Health + ((_mergeLevel - 1) * 1.2f) + ((_upgradeCardLevel - 1) * 1.1f) + ((_upgradeLevel - 1) * 1.15f);
-        float damage = _cardFormattedData.cardInfo.Health + ((_mergeLevel - 1) * 1.08f) + ((_upgradeCardLevel - 1) * 1.02f) + ((_upgradeLevel - 1) * 1.05f);
-        float attackInterval = _cardFormattedData.cardInfo.Health - ((_mergeLevel - 1) * 0.1f) - ((_upgradeCardLevel - 1) * 0.02f) - ((_upgradeLevel - 1) * 0.04f);
+
+        float health = _cardFormattedData.cardInfo.Health + (_cardFormattedData.cardInfo.Health * 0.5f * (_mergeLevel - 1)) + (_cardFormattedData.cardInfo.Health * 0.2f * (_upgradeCardLevel - 1)) + (_cardFormattedData.cardInfo.Health * 0.4f * (_upgradeLevel - 1));
+
+        float damage = _cardFormattedData.cardInfo.Damage + (_cardFormattedData.cardInfo.Damage * 0.45f * (_mergeLevel - 1)) + (_cardFormattedData.cardInfo.Damage * 0.15f * (_upgradeCardLevel - 1)) + (_cardFormattedData.cardInfo.Damage * 0.35f * (_upgradeLevel - 1));
+
+        float attackInterval = _cardFormattedData.cardInfo.AttackInterval - (_cardFormattedData.cardInfo.AttackInterval * 0.06f * (_mergeLevel - 1)) - (_cardFormattedData.cardInfo.AttackInterval * 0.01f * (_upgradeCardLevel - 1)) - (_cardFormattedData.cardInfo.AttackInterval * 0.04f * (_upgradeLevel - 1));
 
         _healthText.text = Math.Round(health, 1).ToString();
         _damageText.text = Math.Round(damage, 1).ToString();
@@ -146,7 +157,7 @@ public class UI_CardPopUp : MonoBehaviour
 
     public void UpgradeCardButtonClick()
     {
-        if (_upgradeCardLevel >= _globalRarity.GetMaxLevelUpgrade(_cardFormattedData.cardInfo.Rarity)) _upgradeCardLevel = 1;
+        if (_upgradeCardLevel >= _globalRarity.GetMaxLevelUpgrade(_cardFormattedData.cardInfo.Rarity)) _upgradeCardLevel = _startUpgradeCardLevel;
         else _upgradeCardLevel++;
 
         _upgradeCardText.text = $"L. {_upgradeCardLevel}";
