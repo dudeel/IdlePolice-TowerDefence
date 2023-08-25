@@ -18,7 +18,7 @@ MonoBehaviour:
   Description: Null
   Rarity: 2
   Type: 3
-  Target: 0
-  Health: 0
-  Damage: 0
-  AttackInterval: 0
+  Target: 2
+  Health: 214
+  Damage: 22
+  AttackInterval: 1.64

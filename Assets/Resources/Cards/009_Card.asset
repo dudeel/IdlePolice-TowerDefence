@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 9
   Image: {fileID: 21300000, guid: c95b7db125ba4254296f3b72dc9f6777, type: 3}
-  Name: Null
-  Description: Null
+  Name: Veteran
+  Description: A former military personnel with extensive combat experience. He knows
+    all the intricacies of shooting and can handle any enemy standing in the way
+    of his team.
   Rarity: 1
   Type: 1
   Target: 0

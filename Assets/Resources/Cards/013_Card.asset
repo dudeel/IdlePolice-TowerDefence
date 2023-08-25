@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 13
   Image: {fileID: 21300000, guid: adf8164c83f5be44f9a402f7340ee730, type: 3}
-  Name: Null
-  Description: Null
+  Name: Corsair
+  Description: Corsair is a skilled fighter with a maritime theme. He wields pistols
+    and cannons to deliver devastating blows. Always seeking new treasures, Corsair
+    takes risks for his team.
   Rarity: 2
   Type: 1
   Target: 0

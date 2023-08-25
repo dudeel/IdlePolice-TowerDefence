@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   Image: {fileID: 21300000, guid: 29524ccd975d4094d9cfe13e11b6e678, type: 3}
-  Name: Null
-  Description: Null
+  Name: Blizzard
+  Description: A former military soldier specialized in cold weapons. He masterfully
+    wields icy blades and has the ability to cool down any situation. Buran never
+    loses his head even in the hottest battles.
   Rarity: 0
   Type: 0
   Target: 2

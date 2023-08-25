@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 12
   Image: {fileID: 21300000, guid: 847818a2a54411d44b8e25b25ef394ca, type: 3}
-  Name: Null
-  Description: Null
+  Name: Scout
+  Description: A fearless and fast fighter who explores the territory and finds weak
+    spots in the enemy's defense. He uses his wit and pistols to give the team an
+    advantage.
   Rarity: 1
   Type: 1
   Target: 0

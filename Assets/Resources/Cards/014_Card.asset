@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 14
   Image: {fileID: 21300000, guid: 2a0a9a838a5147144a1d570b0866d63d, type: 3}
-  Name: Null
-  Description: Null
+  Name: Marauder
+  Description: A ruthless and merciless warrior who uses automatic weapons to sow
+    destruction among enemy ranks. He shows no mercy and always pushes forward, destroying
+    everything in his path.
   Rarity: 2
   Type: 1
   Target: 2

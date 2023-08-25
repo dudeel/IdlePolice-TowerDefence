@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 4
   Image: {fileID: 21300000, guid: 221fd9a648bca124a9a1fc2af7cfed63, type: 3}
-  Name: Null
-  Description: Null
+  Name: Thunder
+  Description: A powerful warrior capable of dealing massive damage with his mighty
+    strikes. He wields a two-handed weapon and brings destruction in his path. Thunder
+    doesn't stop until all enemies are destroyed.
   Rarity: 3
   Type: 0
   Target: 0
   Health: 60
   Damage: 48
-  AttackInterval: 1.64
+  AttackInterval: 1.36

@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 15
   Image: {fileID: 21300000, guid: 08c4d24131e055640bd0eacc904d7419, type: 3}
-  Name: Null
-  Description: Null
+  Name: Hunter
+  Description: Hunter is a skilled marksman who eliminates enemies effortlessly.
+    He uses pistols and rifles for long-range support. Always hunting for new prey,
+    Hunter defends the tower against any threat.
   Rarity: 2
   Type: 1
   Target: 1
   Health: 28
   Damage: 38
-  AttackInterval: 1.4
+  AttackInterval: 1.22

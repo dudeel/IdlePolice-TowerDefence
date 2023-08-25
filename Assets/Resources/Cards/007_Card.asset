@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 7
   Image: {fileID: 21300000, guid: b6a3342bf3411074dbdfe478cf9ca62b, type: 3}
-  Name: Null
-  Description: Null
+  Name: Soldier
+  Description: A loyal warrior ready to fight until the last bullet. He excels in
+    automatic weapons and is always prepared to assist his team.
   Rarity: 0
   Type: 1
   Target: 1

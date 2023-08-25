@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 16
   Image: {fileID: 21300000, guid: 3a26ea9f8d4845d4c8e9d70eedf454e3, type: 3}
-  Name: Null
-  Description: Null
+  Name: Sentinel
+  Description: A skilled police sniper, possessing impeccable accuracy and incredible
+    reload speed. Always on the front line, he defends the tower against criminals
+    and enemy attacks.
   Rarity: 3
   Type: 1
   Target: 2
   Health: 48
   Damage: 44
-  AttackInterval: 1.12
+  AttackInterval: 0.86

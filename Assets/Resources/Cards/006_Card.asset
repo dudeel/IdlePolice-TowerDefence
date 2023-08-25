@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 6
   Image: {fileID: 21300000, guid: 18d88b41cc39e884685199a4f0b8be1c, type: 3}
-  Name: Null
-  Description: Null
+  Name: Shadow
+  Description: A master of stealth and cunning. He uses dark methods and agility
+    to strike enemies from close quarters. Shadow is always where he is least expected.
   Rarity: 0
   Type: 1
   Target: 2

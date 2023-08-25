@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 11
   Image: {fileID: 21300000, guid: 56583006501a353419fd6324b59dade6, type: 3}
-  Name: Null
-  Description: Null
+  Name: Guardian
+  Description: A reliable defender always standing guard over the tower. He uses
+    pistols and rifles to keep enemies under control and ensure the safety of the
+    team.
   Rarity: 1
   Type: 1
   Target: 1

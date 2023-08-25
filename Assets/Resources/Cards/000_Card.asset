@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   Image: {fileID: 21300000, guid: bf7f3ba934f72904aa6687d09e9a750c, type: 3}
-  Name: Null
-  Description: Null
+  Name: Steel
+  Description: A former police officer with combat experience. He is known for his
+    strength and unwavering determination. Steel is always ready to defend his comrades
+    and the tower at any cost.
   Rarity: 0
   Type: 0
   Target: 0
