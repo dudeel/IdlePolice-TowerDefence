@@ -124,16 +124,23 @@ public class UI_CardPopUp : MonoBehaviour
     {
         _targetText.text = GlobalTargetType.GetTargetType(_cardFormattedData.cardInfo.Target);
 
-
         float health = _cardFormattedData.cardInfo.Health + (_cardFormattedData.cardInfo.Health * 0.5f * (_mergeLevel - 1)) + (_cardFormattedData.cardInfo.Health * 0.2f * (_upgradeCardLevel - 1)) + (_cardFormattedData.cardInfo.Health * 0.4f * (_upgradeLevel - 1));
 
         float damage = _cardFormattedData.cardInfo.Damage + (_cardFormattedData.cardInfo.Damage * 0.45f * (_mergeLevel - 1)) + (_cardFormattedData.cardInfo.Damage * 0.15f * (_upgradeCardLevel - 1)) + (_cardFormattedData.cardInfo.Damage * 0.35f * (_upgradeLevel - 1));
 
         float attackInterval = _cardFormattedData.cardInfo.AttackInterval - (_cardFormattedData.cardInfo.AttackInterval * 0.06f * (_mergeLevel - 1)) - (_cardFormattedData.cardInfo.AttackInterval * 0.01f * (_upgradeCardLevel - 1)) - (_cardFormattedData.cardInfo.AttackInterval * 0.04f * (_upgradeLevel - 1));
 
-        _healthText.text = Math.Round(health, 1).ToString();
-        _damageText.text = Math.Round(damage, 1).ToString();
-        _attackIntervalText.text = $"{Math.Round(attackInterval, 2)}s";
+        if (0 < Math.Round(health - (_cardFormattedData.cardInfo.Health * 0.2f * (_startUpgradeCardLevel - 1)) - _cardFormattedData.cardInfo.Health, 1))
+            _healthText.text = $"{Math.Round(health, 1)} <size=35><color=green>+{Math.Round(health - (_cardFormattedData.cardInfo.Health * 0.2f * (_startUpgradeCardLevel - 1)) - _cardFormattedData.cardInfo.Health, 1)}s</color></size>";
+        else _healthText.text = $"{Math.Round(health, 1)}";
+
+        if (0 < Math.Round(damage - (_cardFormattedData.cardInfo.Damage * 0.15f * (_startUpgradeCardLevel - 1)) - _cardFormattedData.cardInfo.Damage, 1))
+            _damageText.text = $"{Math.Round(damage, 1)} <size=35><color=green>+{Math.Round(damage - (_cardFormattedData.cardInfo.Damage * 0.15f * (_startUpgradeCardLevel - 1)) - _cardFormattedData.cardInfo.Damage, 1)}s</color></size>";
+        else _damageText.text = $"{Math.Round(damage, 1)}";
+
+        if (0 < Math.Round(_cardFormattedData.cardInfo.AttackInterval - (_cardFormattedData.cardInfo.AttackInterval * 0.01f * (_startUpgradeCardLevel - 1)) - attackInterval, 2))
+            _attackIntervalText.text = $"{Math.Round(attackInterval, 2)}s <size=35><color=green>-{Math.Round(_cardFormattedData.cardInfo.AttackInterval - (_cardFormattedData.cardInfo.AttackInterval * 0.01f * (_startUpgradeCardLevel - 1)) - attackInterval, 2)}s</color></size>";
+        else _attackIntervalText.text = $"{Math.Round(attackInterval, 2)}s";
     }
 
     private void SetButtonsText()
