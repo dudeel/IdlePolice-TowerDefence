@@ -102,6 +102,9 @@ public class UI_CardPopUp : MonoBehaviour
 
     private void SetLevelData()
     {
+        _upgradeCardLevelButtonUI.enabled = true;
+        _upgradeCardLevelButton.sprite = _blueButtonSprite;
+
         if (_cardFormattedData.levelData == null)
         {
             _startUpgradeCardLevel = 1;
@@ -127,8 +130,6 @@ public class UI_CardPopUp : MonoBehaviour
             }
             else
             {
-                _upgradeCardLevelButtonUI.enabled = false;
-                _upgradeCardLevelButton.sprite = _blueButtonSprite;
                 _upgradeCardText.text = $"L. {_upgradeCardLevel}";
             }
 
