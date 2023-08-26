@@ -8,6 +8,7 @@ public class UI_CardPopUp : MonoBehaviour
 
     private const int MAX_MERGE_LEVEL = 6;
     private const int MAX_UPGRADE_IN_GAME_LEVEL = 10;
+    private const int UPGRADE_PRICE_MULTIPLY = 350;
 
     private int _mergeLevel = 1;
     private int _startUpgradeCardLevel = 1;
@@ -52,6 +53,8 @@ public class UI_CardPopUp : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _upgradeCardText;
     [SerializeField] private TextMeshProUGUI _upgradeText;
 
+    readonly Curency _curencySerialize = new();
+
     public void OpenMenu()
     {
         _menuUI.SetActive(true);
@@ -74,6 +77,7 @@ public class UI_CardPopUp : MonoBehaviour
         SetDescription();
         SetStatsText();
         SetSelectButton();
+        SetUpgradeButton();
     }
 
     private void SetCard()
@@ -216,9 +220,45 @@ public class UI_CardPopUp : MonoBehaviour
 
     }
 
-    public void UpgradeCheck()
+    public void SetUpgradeButton()
     {
+        if (_cardFormattedData.levelData == null)
+        {
+            _upgradeButtonUI.enabled = false;
+            _upgradeButton.sprite = _disableButtonSprite;
 
+            int upgradePrice = _globalRarity.GetUpgradePriceMultiply(_cardFormattedData.cardInfo.Rarity) * UPGRADE_PRICE_MULTIPLY;
+            _upgradePriceText.text = upgradePrice.ToString();
+        }
+        else if (_cardFormattedData.levelData.Level >= _globalRarity.GetMaxLevelUpgrade(_cardFormattedData.cardInfo.Rarity))
+        {
+            _upgradeButtonUI.enabled = false;
+            _upgradeButton.sprite = _disableButtonSprite;
+            _upgradePriceText.text = "MAX";
+        }
+        else
+        {
+            int upgradePrice = _cardFormattedData.levelData.Level * _globalRarity.GetUpgradePriceMultiply(_cardFormattedData.cardInfo.Rarity) * UPGRADE_PRICE_MULTIPLY;
+            _upgradePriceText.text = upgradePrice.ToString();
+
+            if (_cardFormattedData.levelData.Exp < _cardFormattedData.levelData.EnoughtExp)
+            {
+                _upgradeButtonUI.enabled = false;
+                _upgradeButton.sprite = _disableButtonSprite;
+                return;
+            }
+
+            if (_curencySerialize.Count().Gold >= upgradePrice)
+            {
+                _upgradeButtonUI.enabled = true;
+                _upgradeButton.sprite = _enableButtonSprite;
+            }
+            else
+            {
+                _upgradeButtonUI.enabled = false;
+                _upgradeButton.sprite = _disableButtonSprite;
+            }
+        }
     }
 
     public void UpdateClick()

@@ -81,22 +81,22 @@ public class GlobalRarity : MonoBehaviour
         }
     }
 
-    public float GetUpgradePriceMultiply(Rarity m_rarity)
+    public int GetUpgradePriceMultiply(Rarity m_rarity)
     {
         switch (m_rarity)
         {
             case Rarity.NORMAL:
-                return 1.5f;
+                return 1;
             case Rarity.RARE:
-                return 2f;
+                return 2;
             case Rarity.MAGIC:
-                return 2.5f;
+                return 3;
             case Rarity.LEGENDARY:
-                return 3f;
+                return 5;
 
             default:
-                Debug.LogError("This rarity is not found. Set default = NORMAL (1.5f)");
-                return 1.5f;
+                Debug.LogError("This rarity is not found. Set default = NORMAL (1)");
+                return 1;
         }
     }
 
