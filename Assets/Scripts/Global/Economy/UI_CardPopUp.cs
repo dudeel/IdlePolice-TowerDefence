@@ -15,6 +15,8 @@ public class UI_CardPopUp : MonoBehaviour
     private int _upgradeCardLevel = 1;
     private int _upgradeLevel = 1;
 
+    private int upgradePrice = 0;
+
     private CardHandler.CardFormattedData _cardFormattedData;
     private GlobalRarity _globalRarity;
 
@@ -215,11 +217,6 @@ public class UI_CardPopUp : MonoBehaviour
         }
     }
 
-    public void SelectClick()
-    {
-
-    }
-
     public void SetUpgradeButton()
     {
         if (_cardFormattedData.levelData == null)
@@ -227,7 +224,7 @@ public class UI_CardPopUp : MonoBehaviour
             _upgradeButtonUI.enabled = false;
             _upgradeButton.sprite = _disableButtonSprite;
 
-            int upgradePrice = _globalRarity.GetUpgradePriceMultiply(_cardFormattedData.cardInfo.Rarity) * UPGRADE_PRICE_MULTIPLY;
+            upgradePrice = _globalRarity.GetUpgradePriceMultiply(_cardFormattedData.cardInfo.Rarity) * UPGRADE_PRICE_MULTIPLY;
             _upgradePriceText.text = upgradePrice.ToString();
         }
         else if (_cardFormattedData.levelData.Level >= _globalRarity.GetMaxLevelUpgrade(_cardFormattedData.cardInfo.Rarity))
@@ -238,7 +235,7 @@ public class UI_CardPopUp : MonoBehaviour
         }
         else
         {
-            int upgradePrice = _cardFormattedData.levelData.Level * _globalRarity.GetUpgradePriceMultiply(_cardFormattedData.cardInfo.Rarity) * UPGRADE_PRICE_MULTIPLY;
+            upgradePrice = _cardFormattedData.levelData.Level * _globalRarity.GetUpgradePriceMultiply(_cardFormattedData.cardInfo.Rarity) * UPGRADE_PRICE_MULTIPLY;
             _upgradePriceText.text = upgradePrice.ToString();
 
             if (_cardFormattedData.levelData.Exp < _cardFormattedData.levelData.EnoughtExp)
@@ -259,6 +256,11 @@ public class UI_CardPopUp : MonoBehaviour
                 _upgradeButton.sprite = _disableButtonSprite;
             }
         }
+    }
+
+    public void SelectClick()
+    {
+
     }
 
     public void UpdateClick()
