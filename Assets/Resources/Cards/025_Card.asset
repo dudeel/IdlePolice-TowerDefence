@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 25
   Image: {fileID: 21300000, guid: c0aa062d9f6fba941bc72217511cb6dd, type: 3}
-  Name: Null
-  Description: Null
+  Name: Flame
+  Description: A powerful mage with fire abilities and devastating damage. The slow
+    attack speed is compensated by the strength of his fire spells.
   Rarity: 0
   Type: 4
   Target: 1

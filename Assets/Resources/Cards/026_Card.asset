@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 26
   Image: {fileID: 21300000, guid: 7793b895dacd9084e922899c6dad3ef6, type: 3}
-  Name: Null
-  Description: Null
+  Name: Frostfang
+  Description: A cold mage capable of dealing massive damage with ice and frost attacks.
+    His slow attack speed is compensated by the power of his icy spells.
   Rarity: 1
   Type: 4
   Target: 2

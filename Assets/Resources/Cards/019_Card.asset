@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 19
   Image: {fileID: 21300000, guid: a32896c9ea41d9e49a2fc0cb5db0c5e2, type: 3}
-  Name: Null
-  Description: Null
+  Name: Armorguard
+  Description: A veteran army soldier with massive armor and high survivability.
+    Securely defends the team from enemy attacks and ensures safety.
   Rarity: 1
   Type: 3
   Target: 0

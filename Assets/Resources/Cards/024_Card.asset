@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 24
   Image: {fileID: 21300000, guid: 5f0cf7a58fc811c46bfb6da23035f975, type: 3}
-  Name: Null
-  Description: Null
+  Name: Protector
+  Description: A mystical character with healing abilities and low damage. Safeguards
+    the team from enemy threats.
   Rarity: 3
   Type: 2
   Target: 0

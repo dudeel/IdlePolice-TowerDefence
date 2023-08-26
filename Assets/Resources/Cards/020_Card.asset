@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 20
   Image: {fileID: 21300000, guid: cf2f21bebb3ee544d9593d4a02b4ec4d, type: 3}
-  Name: Null
-  Description: Null
+  Name: Invincible
+  Description: An unstoppable fighter with impenetrable armor and immense endurance.
+    Stands in defense of the city, repelling enemy attacks and maintaining order.
   Rarity: 2
   Type: 3
   Target: 2

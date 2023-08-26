@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 27
   Image: {fileID: 21300000, guid: ac007616a89bdea4ca20260e5a3f9c0c, type: 3}
-  Name: Null
-  Description: Null
+  Name: Mystic
+  Description: A wise monk with magical abilities. Deals immense damage with healing
+    spells and mystical attacks. His slow attack speed is compensated by his incredible
+    magical skills and wisdom.
   Rarity: 3
   Type: 4
   Target: 0

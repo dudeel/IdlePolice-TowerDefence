@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 21
   Image: {fileID: 21300000, guid: b38f8bc5a837f784197d75f68bf07f05, type: 3}
-  Name: Null
-  Description: Null
+  Name: Healer
+  Description: An experienced doctor with healing abilities and low damage. Provides
+    support to the team.
   Rarity: 0
   Type: 2
   Target: 0

@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 18
   Image: {fileID: 21300000, guid: 302bcf86bc473b54fa05e133512cee94, type: 3}
-  Name: Null
-  Description: Null
+  Name: Ironfist
+  Description: A skilled police officer with powerful offensive skills and high endurance.
+    Deals devastating blows to enemies and safeguards the borders.
   Rarity: 1
   Type: 3
   Target: 1
