@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UI_SelectedCards : MonoBehaviour
 {
     [SerializeField] private GameObject _cardObject;
     private CardHandler.CardFormattedData[] _selected = new CardHandler.CardFormattedData[4];
+    public List<GameObject> SelectedCardObjectList;
 
     [SerializeField] private UI_CardPopUp _popUpUI;
     private void Start()
@@ -12,7 +14,8 @@ public class UI_SelectedCards : MonoBehaviour
 
         foreach (var item in _selected)
         {
-            var card = Instantiate(_cardObject, transform);
+            GameObject card = Instantiate(_cardObject, transform);
+            SelectedCardObjectList.Add(card);
 
             UI_Card cardUI = card.GetComponent<UI_Card>();
             UI_CardLevel cardUILevel = card.GetComponent<UI_CardLevel>();

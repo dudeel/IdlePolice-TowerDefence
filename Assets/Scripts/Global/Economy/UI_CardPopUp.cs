@@ -57,6 +57,8 @@ public class UI_CardPopUp : MonoBehaviour
 
     readonly Curency _curencySerialize = new();
 
+    [SerializeField] private UI_SelectingCardMenu _selectingCardMenu;
+
     public void OpenMenu()
     {
         _menuUI.SetActive(true);
@@ -260,7 +262,11 @@ public class UI_CardPopUp : MonoBehaviour
 
     public void SelectClick()
     {
-
+        CloseMenu();
+        _selectingCardMenu.CardFormattedData = _cardFormattedData;
+        _selectingCardMenu.GlobalRarity = _globalRarity;
+        _selectingCardMenu.GlobalAttackType = transform.GetComponent<GlobalAttackType>();
+        _selectingCardMenu.EnableSelectMenu();
     }
 
     public void UpdateClick()
