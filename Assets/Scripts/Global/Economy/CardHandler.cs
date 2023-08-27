@@ -31,7 +31,7 @@ public static class CardHandler
         public System.Collections.Generic.List<CardFormattedData> notFound;
     }
 
-    private static CardContainer _cardContainer;
+    public static CardContainer _cardContainer;
     private static readonly Card _card = new();
     private static readonly GlobalCardsList _globalCardsList = new();
     private static CardFormattedLevel cardFormattedLevel;

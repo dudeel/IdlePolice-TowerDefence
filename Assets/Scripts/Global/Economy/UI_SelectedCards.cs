@@ -12,6 +12,11 @@ public class UI_SelectedCards : MonoBehaviour
 
     private void Start()
     {
+        LoadData();
+    }
+
+    private void LoadData()
+    {
         _selected = CardHandler.Get().selected;
 
         for (int i = 0; i < _selected.Length; i++)
@@ -33,7 +38,28 @@ public class UI_SelectedCards : MonoBehaviour
 
             UI_CardSelecting cardSelecting = card.GetComponent<UI_CardSelecting>();
             cardSelecting.Index = i;
+            cardSelecting.ID = _selected[i].cardInfo.ID;
             cardSelecting.SelectingCardMenu = _selectingCardMenu;
+        }
+    }
+
+    public void UpdateData()
+    {
+        _selected = CardHandler.Get().selected;
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            UI_Card cardUI = transform.GetChild(i).GetComponent<UI_Card>();
+            cardUI.CardFormattedData = _selected[i];
+            cardUI.CharacterInfo = _selected[i].cardInfo;
+            cardUI.LoadData();
+
+            UI_CardLevel cardUILevel = transform.GetChild(i).GetComponent<UI_CardLevel>();
+            cardUILevel.Data = _selected[i];
+            cardUILevel.SetData();
+
+            UI_CardSelecting cardSelecting = transform.GetChild(i).GetComponent<UI_CardSelecting>();
+            cardSelecting.ID = _selected[i].cardInfo.ID;
         }
     }
 }

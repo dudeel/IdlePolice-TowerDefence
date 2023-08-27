@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class UI_SelectingCardMenu : MonoBehaviour
 {
@@ -13,15 +14,6 @@ public class UI_SelectingCardMenu : MonoBehaviour
 
     [SerializeField] private List<GameObject> _anotherCardUI;
     [SerializeField] private UI_SelectedCards _selectedCards;
-
-    private List<CardHandler.CardFormattedData> _collected;
-    private CardHandler.CardFormattedData[] _selected = new CardHandler.CardFormattedData[4];
-
-    private void Start()
-    {
-        _selected = CardHandler.Get().selected;
-        _collected = CardHandler.Get().collected;
-    }
 
     public void EnableSelectMenu()
     {
@@ -65,17 +57,16 @@ public class UI_SelectingCardMenu : MonoBehaviour
         _uiCardLevel.SetData();
     }
 
-    public void ChangeCard(int index)
+    public void ChangeCard(int SelectIndex, int CardID)
     {
-        UI_Card cardUI = _selectedCards.SelectedCardObjectList[index].GetComponent<UI_Card>();
-        UI_CardLevel cardUILevel = _selectedCards.SelectedCardObjectList[index].GetComponent<UI_CardLevel>();
+        CardHandler._cardContainer.all[CardFormattedData.cardInfo.ID].cardStatus = CardHandler.CardStatus.Select;
+        CardHandler._cardContainer.all[CardID].cardStatus = CardHandler.CardStatus.Collect;
 
-        cardUI.CardFormattedData = CardFormattedData;
-        cardUI.CharacterInfo = CardFormattedData.cardInfo;
-        cardUI.LoadData();
+        CardHandler._cardContainer.collected.Remove(CardFormattedData);
+        CardHandler._cardContainer.collected.Add(CardHandler._cardContainer.selected[SelectIndex]);
+        CardHandler._cardContainer.selected[SelectIndex] = CardFormattedData;
 
-        cardUILevel.Data = CardFormattedData;
-        cardUILevel.SetData();
+        _selectedCards.UpdateData();
 
         DisableSelectMenu();
     }
