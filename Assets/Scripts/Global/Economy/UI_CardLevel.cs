@@ -28,11 +28,17 @@ public class UI_CardLevel : MonoBehaviour
 
     void Start()
     {
-        if (GlobalRarity) SetData();
+        if (GlobalRarity) LoadData();
     }
+    private void OnEnable()
+    { CardHandler.onChangeCardLevel += LoadData; }
+    private void OnDisable()
+    { CardHandler.onChangeCardLevel -= LoadData; }
 
-    public void SetData()
+    public void LoadData()
     {
+        if (!GlobalRarity) return;
+
         if (Data.levelData.Level >= GlobalRarity.GetMaxLevelUpgrade(Data.cardInfo.Rarity))
         {
             _levelIcon.sprite = _maxIcon;

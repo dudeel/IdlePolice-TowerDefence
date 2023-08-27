@@ -56,7 +56,7 @@ public class UI_SelectedCards : MonoBehaviour
 
             UI_CardLevel cardUILevel = transform.GetChild(i).GetComponent<UI_CardLevel>();
             cardUILevel.Data = _selected[i];
-            cardUILevel.SetData();
+            cardUILevel.LoadData();
 
             UI_CardSelecting cardSelecting = transform.GetChild(i).GetComponent<UI_CardSelecting>();
             cardSelecting.ID = _selected[i].cardInfo.ID;

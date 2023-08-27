@@ -53,7 +53,7 @@ public class UI_SelectingCardMenu : MonoBehaviour
 
         _uiCardLevel.GlobalRarity = GlobalRarity;
         _uiCardLevel.Data = CardFormattedData;
-        _uiCardLevel.SetData();
+        _uiCardLevel.LoadData();
     }
 
     public void ChangeCard(int SelectIndex, int CardID)

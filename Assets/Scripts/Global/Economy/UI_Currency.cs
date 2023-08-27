@@ -10,16 +10,21 @@ public class UI_Currency : MonoBehaviour
 
     private void Awake()
     {
-        SetData();
-        UpdateText();
+        LoadData();
 
         CardHandler.LoadData();
     }
+    private void OnEnable()
+    { Curency.onChangeCurrency += LoadData; }
+    private void OnDisable()
+    { Curency.onChangeCurrency -= LoadData; }
 
-    private void SetData()
+    private void LoadData()
     {
         _data.Gold = Curency.Count().Gold;
         _data.Gem = Curency.Count().Gem;
+
+        UpdateText();
     }
 
 

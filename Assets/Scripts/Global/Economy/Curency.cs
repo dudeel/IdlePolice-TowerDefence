@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.Events;
 
 public static class Curency
 {
     private const int MAX_AMOUNT = 5000000;
     public static readonly string KEY = "/Curency.dat";
+    public static UnityAction onChangeCurrency;
 
     public enum CurencyType
     {
@@ -39,6 +41,7 @@ public static class Curency
         }
 
         _curencySerialize.SaveData(KEY, Amount);
+        onChangeCurrency?.Invoke();
     }
 
     public static void Take(int value, CurencyType type)
@@ -64,6 +67,7 @@ public static class Curency
         }
 
         _curencySerialize.SaveData(KEY, Amount);
+        onChangeCurrency?.Invoke();
     }
 
     public static void Set(int value, CurencyType type)
@@ -85,6 +89,7 @@ public static class Curency
         }
 
         _curencySerialize.SaveData(KEY, Amount);
+        onChangeCurrency?.Invoke();
     }
 
     public static CurencyData Count()

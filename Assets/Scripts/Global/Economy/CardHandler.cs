@@ -1,4 +1,5 @@
 using System;
+using UnityEngine.Events;
 
 public static class CardHandler
 {
@@ -36,6 +37,8 @@ public static class CardHandler
     private static readonly GlobalCardsList _globalCardsList = new();
     private static CardFormattedLevel cardFormattedLevel;
     private static CardFormattedData cardFormattedData;
+    public static UnityAction onChangeCardLevel;
+    public static UnityAction onChangeCardList;
 
     public static void LoadData()
     {
@@ -138,6 +141,7 @@ public static class CardHandler
             {
                 _cardContainer.collected[i].levelData.Exp -= Math.Abs(amount);
                 Save();
+                onChangeCardLevel?.Invoke();
             }
         }
     }
@@ -150,6 +154,7 @@ public static class CardHandler
             {
                 _cardContainer.collected[i].levelData.Level++;
                 Save();
+                onChangeCardLevel?.Invoke();
             }
         }
     }
@@ -162,6 +167,7 @@ public static class CardHandler
             {
                 _cardContainer.collected[i].levelData.Exp += Math.Abs(amount);
                 Save();
+                onChangeCardLevel?.Invoke();
             }
         }
     }
@@ -193,6 +199,7 @@ public static class CardHandler
         }
 
         Save();
+        onChangeCardList?.Invoke();
     }
 
     public static CardContainer Get()

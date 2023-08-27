@@ -57,6 +57,11 @@ public class UI_CardPopUp : MonoBehaviour
 
     [SerializeField] private UI_SelectingCardMenu _selectingCardMenu;
 
+    private void OnEnable()
+    { CardHandler.onChangeCardLevel += LoadFunc; }
+    private void OnDisable()
+    { CardHandler.onChangeCardLevel -= LoadFunc; }
+
     public void OpenMenu()
     {
         _menuUI.SetActive(true);
@@ -72,6 +77,11 @@ public class UI_CardPopUp : MonoBehaviour
         _globalRarity = transform.GetComponent<GlobalRarity>();
         _cardFormattedData = data;
 
+        LoadFunc();
+    }
+
+    private void LoadFunc()
+    {
         SetButtonsText();
         SetCard();
         SetLevelData();
@@ -126,7 +136,7 @@ public class UI_CardPopUp : MonoBehaviour
 
             _startUpgradeCardLevel = _cardFormattedData.levelData.Level;
             _upgradeCardLevel = _startUpgradeCardLevel;
-            _uiCardLevel.SetData();
+            _uiCardLevel.LoadData();
 
             if (_startUpgradeCardLevel >= _globalRarity.GetMaxLevelUpgrade(_cardFormattedData.cardInfo.Rarity))
             {
