@@ -1,5 +1,3 @@
-using System.Diagnostics;
-
 public static class CardHandler
 {
     public enum CardStatus
@@ -82,11 +80,14 @@ public static class CardHandler
                     _cardContainer.all[i] = cardFormattedData;
                 }
             }
+        }
 
-            // Если такая карта выбрана игроком
-            for (int j = 0; j < _card.Amount.Selecteds.Length; j++)
+        // Если такая карта выбрана игроком
+        for (int i = 0; i < _card.Amount.Selecteds.Length; i++)
+        {
+            for (int j = 0; j < _card.Amount.Collecteds.Count; j++)
             {
-                if (_globalCardsList.Cards[i].ID == _card.Amount.Selecteds[j].ID)
+                if (_card.Amount.Selecteds[i].ID == _card.Amount.Collecteds[j].ID)
                 {
                     cardFormattedLevel = new()
                     {
@@ -97,25 +98,23 @@ public static class CardHandler
 
                     cardFormattedData = new()
                     {
-                        cardInfo = _globalCardsList.Cards[i],
+                        cardInfo = _globalCardsList.Cards[_card.Amount.Selecteds[i].ID],
                         levelData = cardFormattedLevel,
                         cardStatus = CardStatus.Select
                     };
 
-                    _cardContainer.all[i] = cardFormattedData;
+                    _cardContainer.all[_card.Amount.Collecteds[j].ID] = cardFormattedData;
+                    _cardContainer.selected[i] = cardFormattedData;
                 }
             }
         }
 
-        int index = 0;
         foreach (var item in _cardContainer.all)
         {
             switch (item.cardStatus)
             {
                 case CardStatus.Select:
-                    _cardContainer.selected[index] = item;
                     _cardContainer.collected.Add(item);
-                    index++;
                     break;
 
                 case CardStatus.Collect:

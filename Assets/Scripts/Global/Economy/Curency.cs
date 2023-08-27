@@ -116,7 +116,7 @@ public class CurencySerialize : SaveLoadAbstract
         file.Close();
     }
 
-    public override void SaveData<CurencyData>(string key, CurencyData data)
+    public void SaveData(string key, CurencyData data)
     {
         _path = Application.persistentDataPath + key;
 

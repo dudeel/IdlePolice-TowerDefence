@@ -269,8 +269,8 @@ public class UI_CardPopUp : MonoBehaviour
         _selectingCardMenu.EnableSelectMenu();
     }
 
-    public void UpdateClick()
+    public void UpgradeClick()
     {
-
+        Debug.Log(upgradePrice);
     }
 }

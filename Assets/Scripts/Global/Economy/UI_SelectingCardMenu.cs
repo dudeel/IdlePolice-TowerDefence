@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
 
 public class UI_SelectingCardMenu : MonoBehaviour
 {
@@ -62,12 +61,11 @@ public class UI_SelectingCardMenu : MonoBehaviour
         CardHandler._cardContainer.all[CardFormattedData.cardInfo.ID].cardStatus = CardHandler.CardStatus.Select;
         CardHandler._cardContainer.all[CardID].cardStatus = CardHandler.CardStatus.Collect;
 
-        CardHandler._cardContainer.collected.Remove(CardFormattedData);
         CardHandler._cardContainer.collected.Add(CardHandler._cardContainer.selected[SelectIndex]);
         CardHandler._cardContainer.selected[SelectIndex] = CardFormattedData;
 
         _selectedCards.UpdateData();
-
+        CardHandler.Save();
         DisableSelectMenu();
     }
 }

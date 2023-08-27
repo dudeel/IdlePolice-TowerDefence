@@ -57,10 +57,10 @@ public class CardSerialize : SaveLoadAbstract
     {
         CardData data = new();
 
-        data.Selecteds[0] = new Selected() { ID = 0 };
-        data.Selecteds[1] = new Selected() { ID = 1 };
-        data.Selecteds[2] = new Selected() { ID = 7 };
-        data.Selecteds[3] = new Selected() { ID = 8 };
+        data.Selecteds[0] = new Selected() { ID = 8 };
+        data.Selecteds[1] = new Selected() { ID = 0 };
+        data.Selecteds[2] = new Selected() { ID = 1 };
+        data.Selecteds[3] = new Selected() { ID = 7 };
 
         data.Collecteds.Add(_ = new Collect() { ID = 0, Level = 1, Exp = 0 });
         data.Collecteds.Add(_ = new Collect() { ID = 1, Level = 20, Exp = 0 });
@@ -73,7 +73,7 @@ public class CardSerialize : SaveLoadAbstract
         return data;
     }
 
-    public override void SaveData<CardData>(string key, CardData data)
+    public void SaveData(string key, CardData data)
     {
         _path = Application.persistentDataPath + key;
 
