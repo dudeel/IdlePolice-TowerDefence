@@ -21,19 +21,19 @@ public class Curency
         switch (type)
         {
             case CurencyType.Gold:
-            if (Amount.Gold + Mathf.Abs(value) <= MAX_AMOUNT)
-                Amount.Gold += Mathf.Abs(value);
-            else Amount.Gold = MAX_AMOUNT;
-            break;
+                if (Amount.Gold + Mathf.Abs(value) <= MAX_AMOUNT)
+                    Amount.Gold += Mathf.Abs(value);
+                else Amount.Gold = MAX_AMOUNT;
+                break;
 
             case CurencyType.Gem:
-            if (Amount.Gem + Mathf.Abs(value) <= MAX_AMOUNT)
-                Amount.Gem += Mathf.Abs(value);
-            else Amount.Gem = MAX_AMOUNT;
-            break;
+                if (Amount.Gem + Mathf.Abs(value) <= MAX_AMOUNT)
+                    Amount.Gem += Mathf.Abs(value);
+                else Amount.Gem = MAX_AMOUNT;
+                break;
 
             default:
-            break;
+                break;
         }
 
         _curencySerialize.SaveData(KEY, Amount);
@@ -44,22 +44,22 @@ public class Curency
         switch (type)
         {
             case CurencyType.Gold:
-            if (Amount.Gold >= Mathf.Abs(value))
-                Amount.Gold -= Mathf.Abs(value);
-            else Amount.Gold = 0;
-            break;
+                if (Amount.Gold >= Mathf.Abs(value))
+                    Amount.Gold -= Mathf.Abs(value);
+                else Amount.Gold = 0;
+                break;
 
             case CurencyType.Gem:
-            if (Amount.Gem >= Mathf.Abs(value))
-                Amount.Gem -= Mathf.Abs(value);
-            else Amount.Gem = 0;
-            break;
+                if (Amount.Gem >= Mathf.Abs(value))
+                    Amount.Gem -= Mathf.Abs(value);
+                else Amount.Gem = 0;
+                break;
 
             default:
-            break;
+                break;
         }
 
-        _curencySerialize.SaveData(KEY, Amount);   
+        _curencySerialize.SaveData(KEY, Amount);
     }
 
     public void Set(int value, CurencyType type)
@@ -67,15 +67,15 @@ public class Curency
         switch (type)
         {
             case CurencyType.Gold:
-            Amount.Gold = Mathf.Abs(value);
-            break;
+                Amount.Gold = Mathf.Abs(value);
+                break;
 
             case CurencyType.Gem:
-            Amount.Gem = Mathf.Abs(value);
-            break;
+                Amount.Gem = Mathf.Abs(value);
+                break;
 
             default:
-            break;
+                break;
         }
 
         _curencySerialize.SaveData(KEY, Amount);
@@ -95,56 +95,56 @@ public class CurencyData
 }
 
 public class CurencySerialize : SaveLoadAbstract
-{    
+{
     private string _path;
 
-	protected override void CreateFile(string key)
-	{
-		_path = Application.persistentDataPath + key;
+    protected override void CreateFile(string key)
+    {
+        _path = Application.persistentDataPath + key;
 
-		FileStream file = File.Create(_path);
-		
-		CurencyData data = new()
-		{
-			Gold = 500,
-			Gem = 10
-		};
+        FileStream file = File.Create(_path);
 
-		BinaryFormatter formatter = new(); 
+        CurencyData data = new()
+        {
+            Gold = 4300,
+            Gem = 10
+        };
+
+        BinaryFormatter formatter = new();
         formatter.Serialize(file, data);
 
-		file.Close();
-	}
-	
-	public override void SaveData<CurencyData>(string key, CurencyData data)
-	{
-		_path = Application.persistentDataPath + key;
+        file.Close();
+    }
 
-		if (!File.Exists(_path))
-		{ CreateFile(key); }
-		
-    	FileStream _file = File.Open(_path, FileMode.Open);
+    public override void SaveData<CurencyData>(string key, CurencyData data)
+    {
+        _path = Application.persistentDataPath + key;
 
-		BinaryFormatter _formatter = new(); 
+        if (!File.Exists(_path))
+        { CreateFile(key); }
+
+        FileStream _file = File.Open(_path, FileMode.Open);
+
+        BinaryFormatter _formatter = new();
         _formatter.Serialize(_file, data);
-		
-		_file.Close();
-	}
 
-	public CurencyData LoadData(string key)
-	{
-		_path = Application.persistentDataPath + key;
+        _file.Close();
+    }
 
-		if (!File.Exists(_path))
-		{ CreateFile(key); }
-		
-    	FileStream _file = File.Open(_path, FileMode.Open);
+    public CurencyData LoadData(string key)
+    {
+        _path = Application.persistentDataPath + key;
 
-		BinaryFormatter _formatter = new(); 
-		CurencyData data = (CurencyData)_formatter.Deserialize(_file);
+        if (!File.Exists(_path))
+        { CreateFile(key); }
 
-		_file.Close();
+        FileStream _file = File.Open(_path, FileMode.Open);
+
+        BinaryFormatter _formatter = new();
+        CurencyData data = (CurencyData)_formatter.Deserialize(_file);
+
+        _file.Close();
 
         return data;
-	}
+    }
 }

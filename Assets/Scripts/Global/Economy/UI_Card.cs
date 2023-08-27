@@ -27,8 +27,9 @@ public class UI_Card : MonoBehaviour
 
     public void OpenPopUp()
     {
+        if (transform.GetComponent<UI_CardSelecting>().isActiveAndEnabled) return;
+
         PopUp.OpenMenu();
         PopUp.SetMenuData(CardFormattedData);
     }
-
 }

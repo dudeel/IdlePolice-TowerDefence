@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 6122907189904627634}
   - component: {fileID: 8355985686519644330}
   - component: {fileID: 5386446306066789917}
+  - component: {fileID: 1535980814676891150}
   - component: {fileID: 14390233950686504}
   m_Layer: 5
   m_Name: Card
@@ -650,6 +651,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1535980814676891150}
+        m_TargetAssemblyTypeName: UI_CardSelecting, Assembly-CSharp
+        m_MethodName: SendSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8355985686519644330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,6 +707,19 @@ MonoBehaviour:
   _compliteBar: {fileID: 21300000, guid: 0a0c4df620af2b74dba8b0d7e5f0b46d, type: 3}
   _maxBar: {fileID: 21300000, guid: 280461dec0efcc64e8cd8c0f80bacc68, type: 3}
   GlobalRarity: {fileID: 0}
+--- !u!114 &1535980814676891150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3291326013479804457}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f0e1fa4b30e7e4e8559c68bed5a266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Index: 0
 --- !u!95 &14390233950686504
 Animator:
   serializedVersion: 5

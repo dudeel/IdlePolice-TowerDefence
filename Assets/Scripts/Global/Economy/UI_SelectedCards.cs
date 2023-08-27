@@ -8,28 +8,32 @@ public class UI_SelectedCards : MonoBehaviour
     public List<GameObject> SelectedCardObjectList;
 
     [SerializeField] private UI_CardPopUp _popUpUI;
+    [SerializeField] private UI_SelectingCardMenu _selectingCardMenu;
+
     private void Start()
     {
         _selected = CardHandler.Get().selected;
 
-        foreach (var item in _selected)
+        for (int i = 0; i < _selected.Length; i++)
         {
             GameObject card = Instantiate(_cardObject, transform);
             SelectedCardObjectList.Add(card);
 
             UI_Card cardUI = card.GetComponent<UI_Card>();
-            UI_CardLevel cardUILevel = card.GetComponent<UI_CardLevel>();
-
-            cardUI.CardFormattedData = item;
+            cardUI.CardFormattedData = _selected[i];
             cardUI.PopUp = _popUpUI;
-
-            cardUI.CharacterInfo = item.cardInfo;
+            cardUI.CharacterInfo = _selected[i].cardInfo;
             cardUI.GlobalCardType = transform.GetComponent<GlobalAttackType>();
             cardUI.GlobalRarity = transform.GetComponent<GlobalRarity>();
             cardUI.LoadData();
 
+            UI_CardLevel cardUILevel = card.GetComponent<UI_CardLevel>();
             cardUILevel.GlobalRarity = transform.GetComponent<GlobalRarity>();
-            cardUILevel.Data = item;
+            cardUILevel.Data = _selected[i];
+
+            UI_CardSelecting cardSelecting = card.GetComponent<UI_CardSelecting>();
+            cardSelecting.Index = i;
+            cardSelecting.SelectingCardMenu = _selectingCardMenu;
         }
     }
 }
