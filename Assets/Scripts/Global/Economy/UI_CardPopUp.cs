@@ -55,8 +55,6 @@ public class UI_CardPopUp : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _upgradeCardText;
     [SerializeField] private TextMeshProUGUI _upgradeText;
 
-    readonly Curency _curencySerialize = new();
-
     [SerializeField] private UI_SelectingCardMenu _selectingCardMenu;
 
     public void OpenMenu()
@@ -247,7 +245,7 @@ public class UI_CardPopUp : MonoBehaviour
                 return;
             }
 
-            if (_curencySerialize.Count().Gold >= upgradePrice)
+            if (Curency.Count().Gold >= upgradePrice)
             {
                 _upgradeButtonUI.enabled = true;
                 _upgradeButton.sprite = _enableButtonSprite;
@@ -271,6 +269,11 @@ public class UI_CardPopUp : MonoBehaviour
 
     public void UpgradeClick()
     {
-        Debug.Log(upgradePrice);
+        if (Curency.Count().Gold >= upgradePrice && _cardFormattedData.levelData.Exp >= _cardFormattedData.levelData.EnoughtExp)
+        {
+            Curency.Take(upgradePrice, Curency.CurencyType.Gold);
+            CardHandler.TakeExp(_cardFormattedData.cardInfo.ID, _cardFormattedData.levelData.EnoughtExp);
+            CardHandler.LevelUp(_cardFormattedData.cardInfo.ID);
+        }
     }
 }

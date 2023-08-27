@@ -2,10 +2,10 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public class Curency
+public static class Curency
 {
     private const int MAX_AMOUNT = 5000000;
-    public readonly string KEY = "/Curency.dat";
+    public static readonly string KEY = "/Curency.dat";
 
     public enum CurencyType
     {
@@ -13,11 +13,13 @@ public class Curency
         Gem = 1,
     }
 
-    private readonly CurencyData Amount;
-    private readonly CurencySerialize _curencySerialize = new();
+    public static CurencyData Amount;
+    private static readonly CurencySerialize _curencySerialize = new();
 
-    public void Add(int value, CurencyType type)
+    public static void Add(int value, CurencyType type)
     {
+        Amount = _curencySerialize.LoadData(KEY);
+
         switch (type)
         {
             case CurencyType.Gold:
@@ -39,8 +41,10 @@ public class Curency
         _curencySerialize.SaveData(KEY, Amount);
     }
 
-    public void Take(int value, CurencyType type)
+    public static void Take(int value, CurencyType type)
     {
+        Amount = _curencySerialize.LoadData(KEY);
+
         switch (type)
         {
             case CurencyType.Gold:
@@ -62,8 +66,10 @@ public class Curency
         _curencySerialize.SaveData(KEY, Amount);
     }
 
-    public void Set(int value, CurencyType type)
+    public static void Set(int value, CurencyType type)
     {
+        Amount = _curencySerialize.LoadData(KEY);
+
         switch (type)
         {
             case CurencyType.Gold:
@@ -81,7 +87,7 @@ public class Curency
         _curencySerialize.SaveData(KEY, Amount);
     }
 
-    public CurencyData Count()
+    public static CurencyData Count()
     {
         return _curencySerialize.LoadData(KEY);
     }
@@ -106,8 +112,8 @@ public class CurencySerialize : SaveLoadAbstract
 
         CurencyData data = new()
         {
-            Gold = 4300,
-            Gem = 10
+            Gold = 6200,
+            Gem = 162
         };
 
         BinaryFormatter formatter = new();

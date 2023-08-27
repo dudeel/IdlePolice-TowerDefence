@@ -1,3 +1,5 @@
+using System;
+
 public static class CardHandler
 {
     public enum CardStatus
@@ -128,9 +130,40 @@ public static class CardHandler
         }
     }
 
+    public static void TakeExp(int ID, int amount)
+    {
+        for (int i = 0; i < _card.Amount.Collecteds.Count; i++)
+        {
+            if (ID == _card.Amount.Collecteds[i].ID)
+            {
+                _cardContainer.collected[i].levelData.Exp -= Math.Abs(amount);
+                Save();
+            }
+        }
+    }
+
+    public static void LevelUp(int ID)
+    {
+        for (int i = 0; i < _card.Amount.Collecteds.Count; i++)
+        {
+            if (ID == _card.Amount.Collecteds[i].ID)
+            {
+                _cardContainer.collected[i].levelData.Level++;
+                Save();
+            }
+        }
+    }
+
     public static void AddExp(int ID, int amount)
     {
-        _cardContainer.collected[ID].levelData.Exp += amount;
+        for (int i = 0; i < _card.Amount.Collecteds.Count; i++)
+        {
+            if (ID == _card.Amount.Collecteds[i].ID)
+            {
+                _cardContainer.collected[i].levelData.Exp += Math.Abs(amount);
+                Save();
+            }
+        }
     }
 
     public static void AddCard(int ID, int amount)
@@ -138,7 +171,7 @@ public static class CardHandler
         cardFormattedLevel = new()
         {
             Level = 1,
-            Exp = amount,
+            Exp = Math.Abs(amount),
             EnoughtExp = _card.Amount.Collecteds[ID].Level * 2
         };
 
@@ -158,6 +191,8 @@ public static class CardHandler
                 _cardContainer.notFound.RemoveAt(i);
             }
         }
+
+        Save();
     }
 
     public static CardContainer Get()

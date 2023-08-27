@@ -6,8 +6,6 @@ public class UI_Currency : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _goldsText;
     [SerializeField] private TextMeshProUGUI _gemsText;
 
-
-    readonly Curency _curencySerialize = new();
     private readonly CurencyData _data = new();
 
     private void Awake()
@@ -20,8 +18,8 @@ public class UI_Currency : MonoBehaviour
 
     private void SetData()
     {
-        _data.Gold = _curencySerialize.Count().Gold;
-        _data.Gem = _curencySerialize.Count().Gem;
+        _data.Gold = Curency.Count().Gold;
+        _data.Gem = Curency.Count().Gem;
     }
 
 
